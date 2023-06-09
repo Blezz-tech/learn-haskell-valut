@@ -1,0 +1,30 @@
+{
+  "newFileLocation": "root",
+  "newFileFolderPath": "tmp",
+  "livePreview": false,
+  "trashOption": "none",
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "newLinkFormat": "shortest",
+  "spellcheck": true,
+  "tabSize": 4,
+  "readableLineLength": false,
+  "alwaysUpdateLinks": true,
+  "showLineNumber": true,
+  "showFrontmatter": true,
+  "promptDelete": false,
+  "attachmentFolderPath": "Ассеты",
+  "showUnsupportedFiles": true,
+  "spellcheckLanguages": [
+    "ru",
+    "en"
+  ],
+  "userIgnoreFilters": [
+    "Шаблоны/"
+  ]
+}

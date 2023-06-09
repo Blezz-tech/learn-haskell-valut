@@ -1,0 +1,43 @@
+{
+  "version": "0.10.0",
+  "data": {
+    "boardConfigs": [
+      {
+        "tag": "dateBoardConfig",
+        "data": {
+          "completedCount": 10,
+          "filters": [
+            {
+              "tag": "tagFilter",
+              "data": "haskell"
+            }
+          ],
+          "filterPolarity": "Allow",
+          "filterScope": "Both",
+          "showFilteredTags": true,
+          "includeUndated": true,
+          "title": "Haskell практика",
+          "collapsedColumns": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ],
+    "globalSettings": {
+      "taskCompletionFormat": "ObsidianTasks",
+      "columnNames": {
+        "today": "Сегодня",
+        "tomorrow": "Завтра",
+        "future": "В будущем",
+        "undated": "Без даты",
+        "others": "Остальные",
+        "untagged": "Без тега",
+        "completed": "Выполненные"
+      },
+      "ignoreFileNameDates": false
+    }
+  }
+}
