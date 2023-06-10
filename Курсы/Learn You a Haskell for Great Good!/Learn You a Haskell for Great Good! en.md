@@ -6,7 +6,7 @@ Welcome to **Learn You a Haskell for Great Good**! If you're reading this, chan
 
 I decided to write this because I wanted to solidify my own knowledge of Haskell and because I thought I could help people new to Haskell learn it from my perspective. There are quite a few tutorials on Haskell floating around on the internet. When I was starting out in Haskell, I didn't learn from just one resource. The way I learned it was by reading several different tutorials and articles because each explained something in a different way than the other did. By going through several resources, I was able put together the pieces and it all just came falling into place. So this is an attempt at adding another useful resource for learning Haskell so you have a bigger chance of finding one you like.
 
-![[LYHfGG_bird.png]]
+![[LYHfGG_1_bird.png]]
 
 This tutorial is aimed at people who have experience in imperative programming languages (C, C++, Java, Python …) but haven't programmed in a functional language before (Haskell, ML, OCaml …). Although I bet that even if you don't have any significant programming experience, a smart person such as yourself will be able to follow along and learn Haskell.
 
@@ -16,15 +16,15 @@ I failed to learn Haskell approximately 2 times before finally grasping it becau
 
 ## So what's Haskell?
 
-![[LYHfGG_fx.png]]
+![[LYHfGG_2_fx.png]]
 
 Haskell is a **purely functional programming language**. In imperative languages you get things done by giving the computer a sequence of tasks and then it executes them. While executing them, it can change state. For instance, you set variable `a` to 5 and then do some stuff and then set it to something else. You have control flow structures for doing some action several times. In purely functional programming you don't tell the computer what to do as such but rather you tell it what stuff _is_. The factorial of a number is the product of all the numbers from 1 to that number, the sum of a list of numbers is the first number plus the sum of all the other numbers, and so on. You express that in the form of functions. You also can't set a variable to something and then set it to something else later. If you say that `a` is 5, you can't say it's something else later because you just said it was 5. What are you, some kind of liar? So in purely functional languages, a function has no side-effects. The only thing a function can do is calculate something and return it as a result. At first, this seems kind of limiting but it actually has some very nice consequences: if a function is called twice with the same parameters, it's guaranteed to return the same result. That's called referential transparency and not only does it allow the compiler to reason about the program's behavior, but it also allows you to easily deduce (and even prove) that a function is correct and then build more complex functions by gluing simple functions together.
 
-![[LYHfGG_lazy.png]]
+![[LYHfGG_3_lazy.png]]
 
 Haskell is **lazy**. That means that unless specifically told otherwise, Haskell won't execute functions and calculate things until it's really forced to show you a result. That goes well with referential transparency and it allows you to think of programs as a series of **transformations on data**. It also allows cool things such as infinite data structures. Say you have an immutable list of numbers `xs = [1,2,3,4,5,6,7,8]` and a function `doubleMe` which multiplies every element by 2 and then returns a new list. If we wanted to multiply our list by 8 in an imperative language and did `doubleMe(doubleMe(doubleMe(xs)))`, it would probably pass through the list once and make a copy and then return it. Then it would pass through the list another two times and return the result. In a lazy language, calling `doubleMe` on a list without forcing it to show you the result ends up in the program sort of telling you "Yeah yeah, I'll do it later!". But once you want to see the result, the first `doubleMe` tells the second one it wants the result, now! The second one says that to the third one and the third one reluctantly gives back a doubled 1, which is a 2. The second one receives that and gives back 4 to the first one. The first one sees that and tells you the first element is 8. So it only does one pass through the list and only when you really need it. That way when you want something from a lazy language you can just take some initial data and efficiently transform and mend it so it resembles what you want at the end.
 
-![[LYHfGG_boat.png]]
+![[LYHfGG_4_boat.png]]
 
 Haskell is **statically typed**. When you compile your program, the compiler knows which piece of code is a number, which is a string and so on. That means that a lot of possible errors are caught at compile time. If you try to add together a number and a string, the compiler will whine at you. Haskell uses a very good type system that has **type inference**. That means that you don't have to explicitly label every piece of code with a type because the type system can intelligently figure out a lot about it. If you say `a = 5 + 4`, you don't have to tell Haskell that `a` is a number, it can figure that out by itself. Type inference also allows your code to be more general. If a function you make takes two parameters and adds them together and you don't explicitly state their type, the function will work on any two parameters that act like numbers.
 
@@ -42,7 +42,7 @@ GHC can take a Haskell script (they usually have a .hs extension) and compile it
 
 ## Ready, set, go!
 
-![[LYHfGG_startingout.png]]
+![[LYHfGG_5_startingout.png]]
 
 Alright, let's get started! If you're the sort of horrible person who doesn't read introductions to things and you skipped it, you might want to read the last section in the introduction anyway because it explains what you need to follow this tutorial and how we're going to load functions. The first thing we're going to do is run ghc's interactive mode and call some function to get a very basic feel for haskell. Open your terminal and type in `ghci`. You will be greeted with something like this.
 
@@ -125,7 +125,7 @@ Yikes! What GHCI is telling us here is that `"llama"` is not a number and so i
 
 You may not have known it but we've been using functions now all along. For instance, `*` is a function that takes two numbers and multiplies them. As you've seen, we call it by sandwiching it between them. This is what we call an _infix_ function. Most functions that aren't used with numbers are _prefix_ functions. Let's take a look at them.
 
-![phoen](http://s3.amazonaws.com/lyah/ringring.png)
+![[LYHfGG_6_ringring.png]]
 
 Functions are usually prefix so from now on we won't explicitly state that a function is of the prefix form, we'll just assume it. In most imperative languages functions are called by writing the function name and then writing its parameters in parentheses, usually separated by commas. In Haskell, functions are called by writing the function name, a space and then the parameters, separated by spaces. For a start, we'll try calling one of the most boring functions in Haskell.
 
@@ -215,7 +215,7 @@ doubleSmallNumber x = if x > 100
                         else x*2 
 ```
 
-![this is you](http://s3.amazonaws.com/lyah/baby.png)
+![[LYHfGG_7_baby.png]]
 
 Right here we introduced Haskell's if statement. You're probably familiar with if statements from other languages. The difference between Haskell's if statement and if statements in imperative languages is that the else part is mandatory in Haskell. In imperative languages you can just skip a couple of steps if the condition isn't satisfied but in Haskell every expression and function must return something. We could have also written that if statement in one line but I find this way more readable. Another thing about the if statement in Haskell is that it is an _expression_. An expression is basically a piece of code that returns a value. `5` is an expression because it returns 5, `4 + 8` is an expression, `x + y` is an expression because it returns the sum of `x` and `y`. Because the else is mandatory, an if statement will always return something and that's why it's an expression. If we wanted to add one to every number that's produced in our previous function, we could have written its body like this.
 
@@ -233,7 +233,7 @@ There are two noteworthy things here. The first is that in the function name we 
 
 ## An intro to lists
 
-![BUY A DOG](http://s3.amazonaws.com/lyah/list.png)
+![[LYHfGG_8_list.png]]
 
 Much like shopping lists in the real world, lists in Haskell are very useful. It's the most used data structure and it can be used in a multitude of different ways to model and solve a whole bunch of problems. Lists are SO awesome. In this section we'll look at the basics of lists, strings (which are lists) and list comprehensions.
 
@@ -349,7 +349,7 @@ ghci> init [5,4,3,2,1]
 
 If we think of a list as a monster, here's what's what.
 
-![list monster](http://s3.amazonaws.com/lyah/listmonster.png)
+![[LYHfGG_9_listmonster.png]]
 
 But what happens if we try to get the head of an empty list?
 
@@ -446,7 +446,7 @@ Those were a few basic functions that operate on lists. We'll take a look at mor
 
 ## Texas ranges
 
-![draw](http://s3.amazonaws.com/lyah/cowboy.png)
+![[LYHfGG_10_cowboy.png]]
 
 What if we want a list of all numbers between 1 and 20? Sure, we could just type them all out but obviously that's not a solution for gentlemen who demand excellence from their programming languages. Instead, we'll use ranges. Ranges are a way of making lists that are arithmetic sequences of elements that can be enumerated. Numbers can be enumerated. One, two, three, four, etc. Characters can also be enumerated. The alphabet is an enumeration of characters from A to Z. Names can't be enumerated. What comes after "John"? I don't know.
 
@@ -507,7 +507,7 @@ Although it's simpler to just use the `replicate` function if you want some nu
 
 ## I'm a list comprehension
 
-![frog](http://s3.amazonaws.com/lyah/kermit.png)
+![[LYHfGG_11_kermit.png]]
 
 If you've ever taken a course in mathematics, you've probably run into _set comprehensions_. They're normally used for building more specific sets out of general sets. A basic comprehension for a set that contains the first ten even natural numbers is $$S = \{2\ \cdot\ x\ |\ x \in \mathbb{N},\ x \leqslant 10\}$$. The part before the pipe is called the output function, `x` is the variable, `N` is the input set and `x <= 10` is the predicate. That means that the set contains the doubles of all natural numbers that satisfy the predicate.
 
@@ -611,7 +611,7 @@ You can write list comprehensions across several lines. So if you're not in GHCI
 
 ## Tuples
 
-![tuples](http://s3.amazonaws.com/lyah/tuple.png)
+![[LYHfGG_13_tuple.png]]
 
 In some ways, tuples are like lists — they are a way to store several values into a single value. However, there are a few fundamental differences. A list of numbers is a list of numbers. That's its type and it doesn't matter if it has only one number in it or an infinite amount of numbers. Tuples, however, are used when you know exactly how many values you want to combine and its type depends on how many components it has and the types of the components. They are denoted with parentheses and their components are separated by commas.
 
@@ -678,7 +678,7 @@ ghci> zip [1..] ["apple", "orange", "cherry", "mango"]
 [(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
 ```
 
-![look at meee](http://s3.amazonaws.com/lyah/pythag.png)
+![[LYHfGG_14_pythag.png]]
 
 Here's a problem that combines tuples and list comprehensions: which right triangle that has integers for all sides and all sides equal to or smaller than 10 has a perimeter of 24? First, let's try generating all triangles with sides equal to or smaller than 10:
 
@@ -706,7 +706,7 @@ And there's our answer! This is a common pattern in functional programming. You 
 
 ## Believe the type
 
-![moo](http://s3.amazonaws.com/lyah/cow.png)
+![[LYHfGG_15_cow.png]]
 
 Previously we mentioned that Haskell has a static type system. The type of every expression is known at compile time, which leads to safer code. If you write a program where you try to divide a boolean type with some number, it won't even compile. That's good because it's better to catch such errors at compile time instead of having your program crash. Everything in Haskell has a type, so the compiler can reason quite a lot about your program before compiling it.
 
@@ -729,7 +729,7 @@ ghci> :t 4 == 5
 4 == 5 :: Bool
 ```
 
-![bomb](http://s3.amazonaws.com/lyah/bomb.png)
+![[LYHfGG_16_bomb.png]]
 
 Here we see that doing `:t` on an expression prints out the expression followed by `::` and its type. `::` is read as "has type of". Explicit types are always denoted with the first letter in capital case. `'a'`, as it would seem, has a type of `Char`. It's not hard to conclude that it stands for _character_. `True` is of a `Bool` type. That makes sense. But what's this? Examining the type of `"HELLO!"` yields a `[Char]`. The square brackets denote a list. So we read that as it being _a list of characters_. Unlike lists, each tuple length has its own type. So the expression of `(True, 'a')` has a type of `(Bool, Char)`, whereas an expression such as `('a','b','c')` would have the type of `(Char, Char, Char)`. `4 == 5` will always return `False`, so its type is `Bool`.
 
@@ -806,7 +806,7 @@ ghci> :t head
 head :: [a] -> a
 ```
 
-![box](http://s3.amazonaws.com/lyah/box.png)
+![[LYHfGG_17_box.png]]
 
 Hmmm! What is this `a`? Is it a type? Remember that we previously stated that types are written in capital case, so it can't exactly be a type. Because it's not in capital case it's actually a **type variable**. That means that `a` can be of any type. This is much like generics in other languages, only in Haskell it's much more powerful because it allows us to easily write very general functions if they don't use any specific behavior of the types in them. Functions that have type variables are called **polymorphic functions**. The type declaration of `head` states that it takes a list of any type and returns one element of that type.
 
@@ -823,7 +823,7 @@ We see that `fst` takes a tuple which contains two types and returns an elemen
 
 ## Typeclasses 101
 
-![class](http://s3.amazonaws.com/lyah/classes.png)
+![[LYHfGG_18_classes.png]]
 
 A typeclass is a sort of interface that defines some behavior. If a type is a part of a typeclass, that means that it supports and implements the behavior the typeclass describes. A lot of people coming from OOP get confused by typeclasses because they think they are like classes in object oriented languages. Well, they're not. You can think of them kind of as Java interfaces, only better.
 
@@ -1017,7 +1017,7 @@ Notice that `fromIntegral` has several class constraints in its type signature
 
 ## Pattern matching
 
-![four!](http://s3.amazonaws.com/lyah/pattern.png)
+![[LYHfGG_19_pattern.png]]
 
 This chapter will cover some of Haskell's cool syntactic constructs and we'll start with pattern matching. Pattern matching consists of specifying patterns to which some data should conform and then checking to see if it does and deconstructing the data according to those patterns.
 
@@ -1192,7 +1192,7 @@ One more thing — you can't use `++` in pattern matches. If you tried to patt
 
 ## Guards, guards!
 
-![guards](http://s3.amazonaws.com/lyah/guards.png)
+![[LYHfGG_20_guards.png]]
 
 Whereas patterns are a way of making sure a value conforms to some form and deconstructing it, guards are a way of testing whether some property of a value (or several of them) are true or false. That sounds a lot like an if statement and it's very similar. The thing is that guards are a lot more readable when you have several conditions and they play really nicely with patterns.
 
@@ -1355,7 +1355,7 @@ cylinder r h =
     in  sideArea + 2 * topArea
 ```
 
-![let it be](http://s3.amazonaws.com/lyah/letitbe.png)
+![[LYHfGG_21_letitbe.png]]
 
 The form is `let <bindings> in <expression>`. The names that you define in the _let_ part are accessible to the expression after the _in_ part. As you can see, we could have also defined this with a _where_ binding. Notice that the names are also aligned in a single column. So what's the difference between the two? For now it just seems that _let_ puts the bindings first and the expression that uses them later whereas _where_ is the other way around.
 
@@ -1428,7 +1428,7 @@ If _let_ bindings are so cool, why not use them all the time instead of _wher
 
 ## Case expressions
 
-![case](http://s3.amazonaws.com/lyah/case.png)
+![[LYHfGG_22_case.png]]
 
 Many imperative languages (C, C++, Java, etc.) have case syntax and if you've ever programmed in them, you probably know what it's about. It's about taking a variable and then executing blocks of code for specific values of that variable and then maybe including a catch-all block of code in case the variable has some value for which we didn't set up a case.
 
@@ -1480,7 +1480,7 @@ describeList xs = "The list is " ++ what xs
 
 ## Hello recursion!
 
-![SOVIET RUSSIA](http://s3.amazonaws.com/lyah/recursion.png)
+![[LYHfGG_23_recursion.png]]
 
 We mention recursion briefly in the previous chapter. In this chapter, we'll take a closer look at recursion, why it's important to Haskell and how we can work out very concise and elegant solutions to problems by thinking recursively.
 
@@ -1521,7 +1521,7 @@ maximum' (x:xs) = max x (maximum' xs)
 
 How's that for elegant! In essence, the maximum of a list is the max of the first element and the maximum of the tail.
 
-![max](http://s3.amazonaws.com/lyah/maxs.png)
+![[LYHfGG_24_maxs.png]]
 
 ## A few more recursive functions
 
@@ -1548,7 +1548,7 @@ take' _ []     = []
 take' n (x:xs) = x : take' (n-1) xs
 ```
 
-![painter](http://s3.amazonaws.com/lyah/painter.png)
+![[LYHfGG_25_painter.png]]
 
 The first pattern specifies that if we try to take a 0 or negative number of elements, we get an empty list. Notice that we're using `_` to match the list because we don't really care what it is in this case. Also notice that we use a guard, but without an `otherwise` part. That means that if `n` turns out to be more than 0, the matching will fall through to the next pattern. The second pattern indicates that if we try to take anything from an empty list, we get an empty list. The third pattern breaks the list into a head and a tail. And then we state that taking `n` elements from a list equals a list that has `x` as the head and then a list that takes `n-1` elements from the tail as a tail. Try using a piece of paper to write down how the evaluation would look like if we try to take, say, 3 from `[4,3,2,1]`.
 
@@ -1598,7 +1598,7 @@ Pretty simple and expected. If the head isn't the element then we check the tail
 
 We have a list of items that can be sorted. Their type is an instance of the `Ord` typeclass. And now, we want to sort them! There's a very cool algoritm for sorting called quicksort. It's a very clever way of sorting items. While it takes upwards of 10 lines to implement quicksort in imperative languages, the implementation is much shorter and elegant in Haskell. Quicksort has become a sort of poster child for Haskell. Therefore, let's implement it here, even though implementing quicksort in Haskell is considered really cheesy because everyone does it to showcase how elegant Haskell is.
 
-![quickman](http://s3.amazonaws.com/lyah/quickman.png)
+![[LYHfGG_26_quickman.png]]
 
 So, the type signature is going to be `quicksort :: (Ord a) => [a] -> [a]`. No surprises there. The edge condition? Empty list, as is expected. A sorted empty list is an empty list. Now here comes the main algorithm: **a sorted list is a list that has all the values smaller than (or equal to) the head of the list in front (and those values are sorted), then comes the head of the list in the middle and then come all the values that are bigger than the head (they're also sorted).** Notice that we said _sorted_ two times in this definition, so we'll probably have to make the recursive call twice! Also notice that we defined it using the verb _is_ to define the algorithm instead of saying _do this, do that, then do that ..._. That's the beauty of functional programming! How are we going to filter the list so that we get only the elements smaller than the head of our list and only elements that are bigger? List comprehensions. So, let's dive in and define this function.
 
@@ -1622,7 +1622,7 @@ ghci> quicksort "the quick brown fox jumps over the lazy dog"
 
 Booyah! That's what I'm talking about! So if we have, say `[5,1,9,4,6,7,3]` and we want to sort it, this algorithm will first take the head, which is `5` and then put it in the middle of two lists that are smaller and bigger than it. So at one point, you'll have `[1,4,3] ++ [5] ++ [9,6,7]`. We know that once the list is sorted completely, the number `5` will stay in the fourth place since there are 3 numbers lower than it and 3 numbers higher than it. Now, if we sort `[1,4,3]` and `[9,6,7]`, we have a sorted list! We sort the two lists using the same function. Eventually, we'll break it up so much that we reach empty lists and an empty list is already sorted in a way, by virtue of being empty. Here's an illustration:
 
-![quicksort](http://s3.amazonaws.com/lyah/quicksort.png)
+![[LYHfGG_27_quicksort.png]]
 
 An element that is in place and won't move anymore is represented in `orange`. If you read them from left to right, you'll see the sorted list. Although we chose to compare all the elements to the heads, we could have used any element to compare against. In quicksort, an element that you compare against is called a pivot. They're in `green` here. We chose the head because it's easy to get by pattern matching. The elements that are smaller than the pivot are `light green` and elements larger than the pivot are `dark green`. The yellowish gradient thing represents an application of quicksort.
 
@@ -1630,7 +1630,7 @@ An element that is in place and won't move anymore is represented in `orange`. 
 
 We did quite a bit of recursion so far and as you've probably noticed, there's a pattern here. Usually you define an edge case and then you define a function that does something between some element and the function applied to the rest. It doesn't matter if it's a list, a tree or any other data structure. A sum is the first element of a list plus the sum of the rest of the list. A product of a list is the first element of the list times the product of the rest of the list. The length of a list is one plus the length of the tail of the list. Ekcetera, ekcetera ...
 
-![brain](http://s3.amazonaws.com/lyah/brain.png)
+![[LYHfGG_28_brain.png]]
 
 Of course, these also have edge cases. Usually the edge case is some scenario where a recursive application doesn't make sense. When dealing with lists, the edge case is most often the empty list. If you're dealing with trees, the edge case is usually a node that doesn't have any children.
 
@@ -1640,7 +1640,7 @@ So when trying to think of a recursive way to solve a problem, try to think of w
 
 # Higher order functions
 
-![sun](http://s3.amazonaws.com/lyah/sun.png)
+![[LYHfGG_29_sun.png]]
 
 Haskell functions can take functions as parameters and return functions as return values. A function that does either of those is called a higher order function. Higher order functions aren't just a part of the Haskell experience, they pretty much are the Haskell experience. It turns out that if you want to define computations by defining what stuff _is_ instead of defining steps that change some state and maybe looping them, higher order functions are indispensable. They're a really powerful way of solving problems and thinking about programs.
 
@@ -1655,7 +1655,7 @@ ghci> (max 4) 5
 5
 ```
 
-![haskell curry](http://s3.amazonaws.com/lyah/curry.png)
+![[LYHfGG_30_curry.png]]
 
 Putting a space between two things is simply **function application**. The space is sort of like an operator and it has the highest precedence. Let's examine the type of `max`. It's `max :: (Ord a) => a -> a -> a`. That can also be written as `max :: (Ord a) => a -> (a -> a)`. That could be read as: `max` takes an `a` and returns (that's the `->`) a function that takes an `a` and returns an `a`. That's why the return type and the parameters of functions are all simply separated with arrows.
 
@@ -1736,7 +1736,7 @@ applyTwice :: (a -> a) -> a -> a
 applyTwice f x = f (f x)
 ```
 
-![rocktopus](http://s3.amazonaws.com/lyah/bonus.png)
+![[LYHfGG_31_bonus.png]]
 
 First of all, notice the type declaration. Before, we didn't need parentheses because `->` is naturally right-associative. However, here, they're mandatory. They indicate that the first parameter is a function that takes something and returns that same thing. The second parameter is something of that type also and the return value is also of the same type. We could read this type declaration in the curried way, but to save ourselves a headache, we'll just say that this function takes two parameters and returns one thing. The first parameter is a function (of type `a -> a`) and the second is that same `a`. The function can also be `Int -> Int` or `String -> String` or whatever. But then, the second parameter to also has to be of that type.
 
@@ -1878,7 +1878,7 @@ quicksort (x:xs) =
     in  smallerSorted ++ [x] ++ biggerSorted
 ```
 
-![map](http://s3.amazonaws.com/lyah/map.png)
+![[LYHfGG_32_map.png]]
 
 Mapping and filtering is the bread and butter of every functional programmer's toolbox. Uh. It doesn't matter if you do it with the `map` and `filter` functions or list comprehensions. Recall how we solved the problem of finding right triangles with a certain circumference. With imperative programming, we would have solved it by nesting three loops and then testing if the current combination satisfies a right triangle and if it has the right perimeter. If that's the case, we would have printed it out to the screen or something. In functional programming, that pattern is achieved with mapping and filtering. You make a function that takes a value and produces some result. We map that function over a list of values and then we filter the resulting list out for the results that satisfy our search. Thanks to Haskell's laziness, even if you map something over a list several times and filter it several times, it will only pass over the list once.
 
@@ -1955,7 +1955,7 @@ Getting the element with the index `4` from our list returns a function that's
 
 ## Lambdas
 
-![lambda](http://s3.amazonaws.com/lyah/lambda.png)
+![[LYHfGG_33_lambda.png]]
 
 Lambdas are basically anonymous functions that are used because we need some functions only once. Normally, we make a lambda with the sole purpose of passing it to a higher-order function. To make a lambda, we write a `\` (because it kind of looks like the greek letter lambda if you squint hard enough) and then we write the parameters, separated by spaces. After that comes a `->` and then the function body. We usually surround them by parentheses, because otherwise they extend all the way to the right.
 
@@ -1968,7 +1968,7 @@ numLongChains = length (filter (\xs -> length xs > 15) (map chain [1..100]))
 
 Lambdas are expressions, that's why we can just pass them like that. The expression `(\xs -> length xs > 15)` returns a function that tells us whether the length of the list passed to it is greater than 15.
 
-![lamb](http://s3.amazonaws.com/lyah/lamb.png)
+![[LYHfGG_34_lamb.png]]
 
 People who are not well acquainted with how currying and partial application works often use lambdas where they don't need to. For instance, the expressions `map (+3) [1,6,3,2]` and `map (\x -> x + 3) [1,6,3,2]` are equivalent since both `(+3)` and `(\x -> x + 3)` are functions that take a number and add 3 to it. Needless to say, making a lambda in this case is stupid since using partial application is much more readable.
 
@@ -2011,7 +2011,7 @@ Even though that's the same as writing `flip' f x y = f y x`, we make it obviou
 
 ## Only folds and horses
 
-![folded bird](http://s3.amazonaws.com/lyah/origami.png)
+![[LYHfGG_35_origami.png]]
 
 Back when we were dealing with recursion, we noticed a theme throughout many of the recursive functions that operated on lists. Usually, we'd have an edge case for the empty list. We'd introduce the `x:xs` pattern and then we'd do some action that involves a single element and the rest of the list. It turns out this is a very common pattern, so a couple of very useful functions were introduced to encapsulate it. These functions are called folds. They're sort of like the `map` function, only they reduce the list to some single value.
 
@@ -2033,7 +2033,7 @@ ghci> sum' [3,5,2,1]
 11
 ```
 
-![foldl](http://s3.amazonaws.com/lyah/foldl.png)
+![[LYHfGG_36_foldl.png]]
 
 Let's take an in-depth look into how this fold happens. `\acc x -> acc + x` is the binary function. `0` is the starting value and `xs` is the list to be folded up. Now first, `0` is used as the `acc` parameter to the binary function and `3` is used as the `x` (or the current element) parameter. `0 + 3` produces a `3` and it becomes the new accumulator value, so to speak. Next up, `3` is used as the accumulator value and `5` as the current element and `8` becomes the new accumulator value. Moving forward, `8` is the accumulator value, `2` is the current element, the new accumulator value is `10`. Finally, that `10` is used as the accumulator value and `1` as the current element, producing an `11`. Congratulations, you've done a fold!
 
@@ -2068,7 +2068,7 @@ If we're mapping `(+3)` to `[1,2,3]`, we approach the list from the right sid
 
 Of course, we could have implemented this function with a left fold too. It would be `map' f xs = foldl (\acc x -> acc ++ [f x]) [] xs`, but the thing is that the `++` function is much more expensive than `:`, so we usually use right folds when we're building up new lists from a list.
 
-![fold this up!](http://s3.amazonaws.com/lyah/washmachine.png)
+![[LYHfGG_37_washmachine.png]]
 
 If you reverse a list, you can do a right fold on it just like you would have done a left fold and vice versa. Sometimes you don't even have to do that. The `sum` function can be implemented pretty much the same with a left and right fold. One big difference is that right folds work on infinite lists, whereas left ones don't! To put it plainly, if you take an infinite list at some point and you fold it up from the right, you'll eventually reach the beginning of the list. However, if you take an infinite list at a point and you try to fold it up from the left, you'll never reach an end!
 
@@ -2144,7 +2144,7 @@ Alright, next up, we'll take a look at the `$` function, also called _functio
 f $ x = f x
 ```
 
-![dollar](http://s3.amazonaws.com/lyah/dollar.png)
+![[LYHfGG_38_dollar.png]]
 
 What the heck? What is this useless operator? It's just function application! Well, almost, but not quite! Whereas normal function application (putting a space between two things) has a really high precedence, the `$` function has the lowest precedence. Function application with a space is left-associative (so `f a b c` is the same as `((f a) b) c)`), function application with `$` is right-associative.
 
@@ -2170,7 +2170,7 @@ In Haskell, function composition is pretty much the same thing. We do function c
 f . g = \x -> f (g x)
 ```
 
-![notes](http://s3.amazonaws.com/lyah/notes.png)
+![[LYHfGG_40_notes.png]]
 
 Mind the type declaration. `f` must take as its parameter a value that has the same type as `g`'s return value. So the resulting function takes a parameter of the same type that `g` takes and returns a value of the same type that `f` returns. The expression `negate . (* 3)` returns a function that takes a number, multiplies it by 3 and then negates it.
 
@@ -2255,7 +2255,7 @@ It wouldn't win any code golf competition, but someone reading the function will
 
 ## Loading modules
 
-![modules](http://s3.amazonaws.com/lyah/modules.png)
+![[LYHfGG_41_modules.png]]
 
 A Haskell module is a collection of related functions, types and typeclasses. A Haskell program is a collection of modules where the main module loads up the other modules and then uses the functions defined in them to do something. Having code split up into several modules has quite a lot of advantages. If a module is generic enough, the functions it exports can be used in a multitude of different programs. If your own code is separated into self-contained modules which don't rely on each other too much (we also say they are loosely coupled), you can reuse them later on. It makes the whole deal of writing code more manageable by having it split into several parts, each of which has some sort of purpose.
 
@@ -2356,7 +2356,7 @@ ghci> map sum $ transpose [[0,3,5,9],[10,0,0,9],[8,5,1,-1]]
 
 When we transpose these three lists, the third powers are then in the first row, the second powers in the second one and so on. Mapping `sum` to that produces our desired result.
 
-![shopping lists](http://s3.amazonaws.com/lyah/legolists.png)
+![[LYHfGG_42_legolists.png]]
 
 `foldl'` and `foldl1'` are stricter versions of their respective lazy incarnations. When using lazy folds on really big lists, you might often get a stack overflow error. The culprit for that is that due to the lazy nature of the folds, the accumulator value isn't actually updated as the folding happens. What actually happens is that the accumulator kind of makes a promise that it will compute its value when asked to actually produce the result (also called a thunk). That happens for every intermediate accumulator and all those thunks overflow your stack. The strict folds aren't lazy buggers and actually compute the intermediate values as they go along instead of filling up your stack with thunks. So if you ever get stack overflow errors when doing lazy folds, try switching to their strict versions.
 
@@ -2766,7 +2766,7 @@ Awesome! ``compare `on` length`` ... man, that reads almost like real English!
 
 ## Data.Char
 
-![lego char](http://s3.amazonaws.com/lyah/legochar.png)
+![[LYHfGG_43_legochar.png]]
 
 The `Data.Char` module does what its name suggests. It exports functions that deal with characters. It's also helpful when filtering and mapping over strings because they're just lists of characters.
 
@@ -2991,7 +2991,7 @@ ghci> findKey "wilma" phoneBook
 Nothing
 ```
 
-![legomap](http://s3.amazonaws.com/lyah/legomap.png)
+![[LYHfGG_44_legomap.png]]
 
 Works like a charm! If we have the girl's phone number, we `Just` get the number, otherwise we get `Nothing`.
 
@@ -3181,7 +3181,7 @@ These were just a few functions from `Data.Map`. You can see a complete list of
 
 ## Data.Set
 
-![legosets](http://s3.amazonaws.com/lyah/legosets.png)
+![[LYHfGG_45_legosets.png]]
 
 The `Data.Set` module offers us, well, sets. Like sets from mathematics. Sets are kind of like a cross between lists and maps. All the elements in a set are unique. And because they're internally implemented with trees (much like maps in `Data.Map`), they're ordered. Checking for membership, inserting, deleting, etc. is much faster than doing the same thing with lists. The most common operation when dealing with sets are inserting into a set, checking for membership and converting a set to a list.
 
@@ -3291,7 +3291,7 @@ ghci> nub "HEY WHATS CRACKALACKIN"
 
 ## Making our own modules
 
-![making modules](http://s3.amazonaws.com/lyah/making_modules.png)
+![[LYHfGG_46_making_modules.png]]
 
 We've looked at some cool modules so far, but how do we make our own module? Almost every programming language enables you to split your code up into several files and Haskell is no different. When making programs, it's good practice to take functions and types that work towards a similar purpose and put them in a module. That way, you can easily reuse those functions in other programs by just importing your module.
 
@@ -3452,7 +3452,7 @@ In a similar fashion, we can think of the `Int` type as being defined like thi
 data Int = -2147483648 | -2147483647 | ... | -1 | 0 | 1 | 2 | ... | 2147483647
 ```
 
-![caveman](http://s3.amazonaws.com/lyah/caveman.png)
+![[LYHfGG_47_caveman.png]]
 
 The first and last value constructors are the minimum and maximum possible values of `Int`. It's not actually defined like this, the ellipses are here because we omitted a heapload of numbers, so this is just for illustrative purposes.
 
@@ -3589,7 +3589,7 @@ Not exporting the value constructors of a data types makes them more abstract in
 
 ## Record syntax
 
-![record](http://s3.amazonaws.com/lyah/record.png)
+![[LYHfGG_48_record.png]]
 
 OK, we've been tasked with creating a data type that describes a person. The info that we want to store about that person is: first name, last name, age, height, phone number, and favorite ice-cream flavor. I don't know about you, but that's all I ever want to know about a person. Let's give it a go!
 
@@ -3696,7 +3696,7 @@ A value constructor can take some values parameters and then produce a new value
 data Maybe a = Nothing | Just a
 ```
 
-![yeti](http://s3.amazonaws.com/lyah/yeti.png)
+![[LYHfGG_49_yeti.png]]
 
 The `a` here is the type parameter. And because there's a type parameter involved, we call `Maybe` a type constructor. Depending on what we want this data type to hold when it's not `Nothing`, this type constructor can end up producing a type of `Maybe Int`, `Maybe Car`, `Maybe String`, etc. No value can have a type of just `Maybe`, because that's not a type per se, it's a type constructor. In order for this to be a real type that a value can be part of, it has to have all its type parameters filled up.
 
@@ -3776,7 +3776,7 @@ ghci> :t Car "Ford" "Mustang" "nineteen sixty seven"
 Car "Ford" "Mustang" "nineteen sixty seven" :: Car [Char] [Char] [Char]
 ```
 
-![meekrat](http://s3.amazonaws.com/lyah/meekrat.png)
+![[LYHfGG_50_meekrat.png]]
 
 In real life though, we'd end up using `Car String String Int` most of the time and so it would seem that parameterizing the `Car` type isn't really worth it. We usually use type parameters when the type that's contained inside the data type's various value constructors isn't really that important for the type to work. A list of stuff is a list of stuff and it doesn't matter what the type of that stuff is, it can still work. If we want to sum a list of numbers, we can specify later in the summing function that we specifically want a list of numbers. Same goes for `Maybe`. `Maybe` represents an option of either having nothing or having one of something. It doesn't matter what the type of that something is.
 
@@ -3824,7 +3824,7 @@ Vector 148 666 222
 
 ## Derived instances
 
-![gob](http://s3.amazonaws.com/lyah/gob.png)
+![[LYHfGG_51_gob.png]]
 
 In the [Typeclasses 101](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101) section, we explained the basics of typeclasses. We explained that a typeclass is a sort of an interface that defines some behavior. A type can be made an **instance** of a typeclass if it supports that behavior. Example: the `Int` type is an instance of the `Eq` typeclass because the `Eq` typeclass defines behavior for stuff that can be equated. And because integers can be equated, `Int` is a part of the `Eq` typeclass. The real usefulness comes with the functions that act as the interface for `Eq`, namely `==` and `/=`. If a type is a part of the `Eq` typeclass, we can use the `==` functions with values of that type. That's why expressions like `4 == 4` and `"foo" /= "bar"` typecheck.
 
@@ -4013,7 +4013,7 @@ Previously, we mentioned that when writing types, the `[Char]` and `String` 
  
 ```
 
-![chicken](http://s3.amazonaws.com/lyah/chicken.png)
+![[LYHfGG_52_chicken.png]]
 
 We've introduced the _type_ keyword. The keyword might be misleading to some, because we're not actually making anything new (we did that with the _data_ keyword), but we're just making a synonym for an already existing type.
 
@@ -4164,7 +4164,7 @@ We could have used a `Maybe a` to represent the result but then we wouldn't kn
 
 ## Recursive data structures
 
-![the fonz](http://s3.amazonaws.com/lyah/thefonz.png)
+![[LYHfGG_53_thefonz.png]]
 
 As we've seen, a constructor in an algebraic data type can have several (or none at all) fields and each field must be of some concrete type. With that in mind, we can make types whose constructors have fields that are of the same type! Using that, we can create recursive data types, where one value of some type contains values of that type, which in turn contain more values of the same type and so on.
 
@@ -4251,7 +4251,7 @@ Nice. Is nice. If we wanted, we could implement all of the functions that operat
 
 Notice how we pattern matched on `(x :-: xs)`. That works because pattern matching is actually about matching constructors. We can match on `:-:` because it is a constructor for our own list type and we can also match on `:` because it is a constructor for the built-in list type. Same goes for `[]`. Because pattern matching works (only) on constructors, we can match for stuff like that, normal prefix constructors or stuff like `8` or `'a'`, which are basically constructors for the numeric and character types, respectively.
 
-![binary search tree](http://s3.amazonaws.com/lyah/binarytree.png)
+![[LYHfGG_54_binarytree.png]]
 
 Now, we're going to implement a **binary search tree**. If you're not familiar with binary search trees from languages like C, here's what they are: an element points to two elements, one on its left and one on its right. The element to the left is smaller, the element to the right is bigger. Each of those elements can also point to two elements (or one, or none). In effect, each element has up to two sub-trees. And a cool thing about binary search trees is that we know that all the elements at the left sub-tree of, say, 5 are going to be smaller than 5. Elements in its right sub-tree are going to be bigger. So if we need to find if 8 is in our tree, we'd start at 5 and then because 8 is greater than 5, we'd go right. We're now at 7 and because 8 is greater than 7, we go right again. And we've found our element in three hops! Now if this were a normal list (or a tree, but really unbalanced), it would take us seven hops instead of three to see if 8 is in there.
 
@@ -4324,7 +4324,7 @@ So as you can see, algebraic data structures are a really cool and powerful conc
 
 ## Typeclasses 102
 
-![tweet](http://s3.amazonaws.com/lyah/trafficlight.png)
+![[LYHfGG_55_trafficlight.png]]
 
 So far, we've learned about some of the standard Haskell typeclasses and we've seen which types are in them. We've also learned how to automatically make our own types instances of the standard typeclasses by asking Haskell to derive the instances for us. In this section, we're going to learn how to make our own typeclasses and how to make types instances of them by hand.
 
@@ -4466,7 +4466,7 @@ Ooh, one more thing, check this out! If you want to see what the instances of a 
 
 ## A yes-no typeclass
 
-![yesno](http://s3.amazonaws.com/lyah/yesno.png)
+![[LYHfGG_56_yesno.png]]
 
 In JavaScript and some other weakly typed languages, you can put almost anything inside an if expression. For example, you can do all of the following: `if (0) alert("YEAH!") else alert("NO!")`, `if ("") alert ("YEAH!") else alert("NO!")`, `if (false) alert("YEAH") else alert("NO!)`, etc. and all of these will throw an alert of `NO!`. If you do `if ("WHAT") alert ("YEAH") else alert("NO!")`, it will alert a `"YEAH!"` because JavaScript considers non-empty strings to be a sort of true-ish value.
 
@@ -4586,7 +4586,7 @@ class Functor f where
     fmap :: (a -> b) -> f a -> f b
 ```
 
-![I AM FUNCTOOOOR!!!](http://s3.amazonaws.com/lyah/functor.png)
+![[LYHfGG_57_functor.png]]
 
 Alright. We see that it defines one function, `fmap`, and doesn't provide any default implementation for it. The type of `fmap` is interesting. In the definitions of typeclasses so far, the type variable that played the role of the type in the typeclass was a concrete type, like the `a` in `(==) :: (Eq a) => a -> a -> Bool`. But now, the `f` is not a concrete type (a type that a value can hold, like `Int`, `Bool` or `Maybe String`), but a type constructor that takes one type parameter. A quick refresher example: `Maybe Int` is a concrete type, but `Maybe` is a type constructor that takes one type as the parameter. Anyway, we see that `fmap` takes a function from one type to another and a functor applied with one type and returns a functor applied with another type.
 
@@ -4681,7 +4681,7 @@ _Just one more thing!_ Functors should obey some laws so that they may have som
 
 ## Kinds and some type-foo
 
-![TYPE FOO MASTER](http://s3.amazonaws.com/lyah/typefoo.png)
+![[LYHfGG_58_typefoo.png]]
 
 Type constructors take other types as parameters to eventually produce concrete types. That kind of reminds me of functions, which take values as parameters to produce values. We've seen that type constructors can be partially applied (`Either String` is a type that takes one type and produces a concrete type, like `Either String Int`), just like functions can. This is all very interesting indeed. In this section, we'll take a look at formally defining how types are applied to type constructors, just like we took a look at formally defining how values are applied to functions by using type declarations. **You don't really have to read this section to continue on your magical Haskell quest** and if you don't understand it, don't worry about it. However, getting this will give you a very thorough understanding of the type system.
 
@@ -4807,7 +4807,7 @@ In this section, we took a good look at how type parameters work and kind of for
 
 # Input and Output
 
-![poor dog](http://s3.amazonaws.com/lyah/dognap.png)
+![[LYHfGG_59_dognap.png]]
 
 We've mentioned that Haskell is a purely functional language. Whereas in imperative languages you usually get things done by giving the computer a series of steps to execute, functional programming is more of defining what stuff is. In Haskell, a function can't change some state, like changing the contents of a variable (when a function changes state, we say that the function has _side-effects_). The only thing a function can do in Haskell is give us back some result based on the parameters we gave it. If a function is called two times with the same parameters, it has to return the same result. While this may seem a bit limiting when you're coming from an imperative world, we've seen that it's actually really cool. In an imperative language, you have no guarantee that a simple function that should just crunch some numbers won't burn down your house, kidnap your dog and scratch your car with a potato while crunching those numbers. For instance, when we were making a binary search tree, we didn't insert an element into a tree by modifying some tree in place. Our function for inserting into a binary search tree actually returned a new tree, because it can't change the old one.
 
@@ -4817,7 +4817,7 @@ Do not despair, all is not lost. It turns out that Haskell actually has a really
 
 ## Hello, world!
 
-![HELLO!](http://s3.amazonaws.com/lyah/helloworld.png)
+![[LYHfGG_60_helloworld.png]]
 
 Up until now, we've always loaded our functions into GHCI to test them out and play with them. We've also explored the standard library functions that way. But now, after eight or so chapters, we're finally going to write our first _real_ Haskell program! Yay! And sure enough, we're going to do the good old `"hello, world"` schtick.
 
@@ -4883,7 +4883,7 @@ ghci> :t getLine
 getLine :: IO String
 ```
 
-![luggage](http://s3.amazonaws.com/lyah/luggage.png)
+![[LYHfGG_61_luggage.png]]
 
 Aha, o-kay. `getLine` is an I/O action that contains a result type of `String`. That makes sense, because it will wait for the user to input something at the terminal and then that something will be represented as a string. So what's up with `name <- getLine` then? You can read that piece of code like this: **perform the I/O action getLine and then bind its result value to name**. `getLine` has a type of `IO String`, so `name` will have a type of `String`. You can think of an I/O action as a box with little feet that will go out into the real world and do something there (like write some graffiti on a wall) and maybe bring back some data. Once it's fetched that data for you, the only way to open the box and get the data inside it is to use the `<-` construct. And if we're taking data out of an I/O action, we can only take it out when we're inside another I/O action. This is how Haskell manages to neatly separate the pure and impure parts of our code. `getLine` is in a sense impure because its result value is not guaranteed to be the same when performed twice. That's why it's sort of _tainted_ with the `IO` type constructor and we can only get that data out in I/O code. And because I/O code is tainted too, any computation that depends on tainted I/O data will have a tainted result.
 
@@ -5241,7 +5241,7 @@ Don't think of a function like `putStrLn` as a function that takes a string an
 
 ## Files and streams
 
-![streams](http://s3.amazonaws.com/lyah/streams.png)
+![[LYHfGG_62_streams.png]]
 
 `getChar` is an I/O action that reads a single character from the terminal. `getLine` is an I/O action that reads a line from the terminal. These two are pretty straightforward and most programming languages have some functions or statements that are parallel to them. But now, let's meet `getContents`. `getContents` is an I/O action that reads everything from the standard input until it encounters an end-of-file character. Its type is `getContents :: IO String`. What's cool about `getContents` is that it does lazy I/O. When we do `foo <- getContents`, it doesn't read all of the input at once, store it in memory and then bind it to `foo`. No, it's lazy! It'll say: _"Yeah yeah, I'll read the input from the terminal later as we go along, when you really need it!"_.
 
@@ -5488,7 +5488,7 @@ type FilePath = String
 data IOMode = ReadMode | WriteMode | AppendMode | ReadWriteMode
 ```
 
-![A FILE IN A CAKE!!!](http://s3.amazonaws.com/lyah/file.png)
+![[LYHfGG_63_file.png]]
 
 Just like our type that represents the seven possible values for the days of the week, this type is an enumeration that represents what we want to do with our opened file. Very simple. Just note that this type is `IOMode` and not `IO Mode`. `IO Mode` would be the type of an I/O action that has a value of some type `Mode` as its result, but `IOMode` is just a simple enumeration.
 
@@ -5522,7 +5522,7 @@ withFile' path mode f = do
     return result
 ```
 
-![butter toast](http://s3.amazonaws.com/lyah/edd.png)
+![[LYHfGG_64_edd.png]]
 
 We know the result will be an I/O action so we can just start off with a _do_. First we open the file and get a handle from it. Then, we apply `handle` to our function to get back the I/O action that does all the work. We bind that action to `result`, close the handle and then do `return result`. By `return`ing the result encapsulated in the I/O action that we got from `f`, we make it so that our I/O action encapsulates the same result as the one we got from `f handle`. So if `f handle` returns an action that will read a number of lines from the standard input and write them to a file and have as its result encapsulated the number of lines it read, if we used that with `withFile'`, the resulting I/O action would also have as its result the number of lines read.
 
@@ -5688,7 +5688,7 @@ Take salad out of the oven
 
 ## Command line arguments
 
-![COMMAND LINE ARGUMENTS!!! ARGH](http://s3.amazonaws.com/lyah/arguments.png)
+![[LYHfGG_65_arguments.png]]
 
 Dealing with command line arguments is pretty much a necessity if you want to make a script or application that runs on a terminal. Luckily, Haskell's standard library has a nice way of getting command line arguments of a program.
 
@@ -5856,7 +5856,7 @@ remove [fileName, numberString] = do
     renameFile tempName fileName
 ```
 
-![fresh baked salad](http://s3.amazonaws.com/lyah/salad.png)
+![[LYHfGG_66_salad.png]]
 
 To summarize our solution: we made a dispatch association that maps from commands to functions that take some command line arguments and return an I/O action. We see what the command is and based on that we get the appropriate function from the dispatch list. We call that function with the rest of the command line arguments to get back an I/O action that will do the appropriate thing and then just perform that action!
 
@@ -5892,7 +5892,7 @@ You could make this program fail a bit more gracefully in case of bad input (for
 
 ## Randomness
 
-![this picture is the ultimate source of randomness and wackiness](http://s3.amazonaws.com/lyah/random.png)
+![[LYHfGG_67_random.png]]
 
 Many times while programming, you need to get some random data. Maybe you're making a game where a die needs to be thrown or you need to generate some test data to test out your program. There are a lot of uses for random data when programming. Well, actually, pseudo-random, because we all know that the only true source of randomness is a monkey on a unicycle with a cheese in one hand and its butt in the other. In this section, we'll take a look at how to make Haskell generate seemingly random data.
 
@@ -6124,7 +6124,7 @@ askForNumber gen = do
         askForNumber newGen
 ```
 
-![jack of diamonds](http://s3.amazonaws.com/lyah/jackofdiamonds.png)
+![[LYHfGG_68_jackofdiamonds.png]]
 
 We make a function `askForNumber`, which takes a random number generator and returns an I/O action that will prompt the user for a number and tell him if he guessed it right. In that function, we first generate a random number and a new generator based on the generator that we got as a parameter and call them `randNumber` and `newGen`. Let's say that the number generated was `7`. Then we tell the user to guess which number we're thinking of. We perform `getLine` and bind its result to `numberString`. When the user enters `7`, `numberString` becomes `"7"`. Next, we use `when` to check if the string the user entered is an empty string. If it is, an empty I/O action of `return ()` is performed, which effectively ends the program. If it isn't, the action consisting of that _do_ block right there gets performed. We use `read` on `numberString` to convert it to a number, so `number` is now `7`.
 
@@ -6174,7 +6174,7 @@ It's very similar to the previous version, only instead of making a function tha
 
 ## Bytestrings
 
-![like normal string, only they byte ... what a pedestrian pun this is](http://s3.amazonaws.com/lyah/chainchomp.png)
+![[LYHfGG_69_chainchomp.png]]
 
 Lists are a cool and useful data structure. So far, we've used them pretty much everywhere. There are a multitude of functions that operate on them and Haskell's laziness allows us to exchange the for and while loops of other languages for filtering and mapping over lists, because evaluation will only happen once it really needs to, so things like infinite lists (and even infinite lists of infinite lists!) are no problem for us. That's why lists can also be used to represent streams, either when reading from the standard input or when reading from files. We can just open a file and read it as a string, even though it will only be accessed when the need arises.
 
@@ -6269,7 +6269,7 @@ Whenever you need better performance in a program that reads a lot of data into 
 
 ## Exceptions
 
-![timberr!!!!](http://s3.amazonaws.com/lyah/timber.png)
+![[LYHfGG_70_timber.png]]
 
 All languages have procedures, functions, and pieces of code that might fail in some way. That's just a fact of life. Different languages have different ways of handling those failures. In C, we usually use some abnormal return value (like `-1` or a null pointer) to indicate that what a function returned shouldn't be treated like a normal value. Java and C#, on the other hand, tend to use exceptions to handle failure. When an exception is thrown, the control flow jumps to some code that we've defined that does some cleanup and then maybe re-throws the exception so that some other error handling code can take care of some other stuff.
 
@@ -6286,7 +6286,7 @@ ghci> head []
 *** Exception: Prelude.head: empty list
 ```
 
-![Stop right there, criminal scum! Nobody breaks the law on my watch! Now pay your fine or it's off to jail.](http://s3.amazonaws.com/lyah/police.png)
+![[LYHfGG_71_police.png]]
 
 Pure code can throw exceptions, but it they can only be caught in the I/O part of our code (when we're inside a _do_ block that goes into `main`). That's because you don't know when (or if) anything will be evaluated in pure code, because it is lazy and doesn't have a well-defined order of execution, whereas I/O code does.
 
@@ -6331,7 +6331,7 @@ Another solution here would be to use exceptions. It's perfectly acceptable to u
 
 To deal with this by using exceptions, we're going to take advantage of the `catch` function from `System.IO.Error`. Its type is `catch :: IO a -> (IOError -> IO a) -> IO a`. It takes two parameters. The first one is an I/O action. For instance, it could be an I/O action that tries to open a file. The second one is the so-called handler. If the first I/O action passed to `catch` throws an I/O exception, that exception gets passed to the handler, which then decides what to do. So the final result is an I/O action that will either act the same as the first parameter or it will do what the handler tells it if the first I/O action throws an exception.
 
-![non sequitor](http://s3.amazonaws.com/lyah/puppy.png)
+![[LYHfGG_72_puppy.png]]
 
 If you're familiar with _try-catch_ blocks in languages like Java or Python, the `catch` function is similar to them. The first parameter is the thing to try, kind of like the stuff in the _try_ block in other, imperative languages. The second parameter is the handler that takes an exception, just like most _catch_ blocks take exceptions that you can then examine to see what happened. The handler is invoked if an exception is thrown.
 
@@ -6463,7 +6463,7 @@ Usually when we write mathematical expressions in school, we write them in an in
 
 [Reverse Polish notation](http://en.wikipedia.org/wiki/Reverse_Polish_notation) is another way of writing down mathematical expressions. Initially it looks a bit weird, but it's actually pretty easy to understand and use because there's no need for parentheses and it's very easy to punch into a calculator. While most modern calculators use infix notation, some people still swear by RPN calculators. This is what the previous infix expression looks like in RPN: `10 4 3 + 2 * -`. How do we calculate what the result of that is? Well, think of a stack. You go over the expression from left to right. Every time a number is encountered, push it on to the stack. When we encounter an operator, take the two numbers that are on top of the stack (we also say that we _pop_ them), use the operator and those two and then push the resulting number back onto the stack. When you reach the end of the expression, you should be left with a single number if the expression was well-formed and that number represents the result.
 
-![this expression](http://s3.amazonaws.com/lyah/rpn.png)
+![[LYHfGG_73_rpn.png]]
 
 Let's go over the expression `10 4 3 + 2 * -` together! First we push `10` on to the stack and the stack is now `10`. The next item is `4`, so we push it to the stack as well. The stack is now `10, 4`. We do the same with `3` and the stack is now `10, 4, 3`. And now, we encounter an operator, namely `+`! We pop the two top numbers from the stack (so now the stack is just `10`), add those numbers together and push that result to the stack. The stack is now `10, 7`. We push `2` to the stack, the stack for now is `10, 7, 2`. We've encountered an operator again, so let's pop `7` and `2` off the stack, multiply them and push that result to the stack. Multiplying `7` and `2` produces a `14`, so the stack we have now is `10, 14`. Finally, there's a `-`. We pop `10` and `14` from the stack, subtract `14` from `10` and push that back. The number on the stack is now `-4` and because there are no more numbers or operators in our expression, that's our result!
 
@@ -6473,7 +6473,7 @@ What would the type of that function be? We want it to take a string as a parame
 
 _Protip:_ it really helps to first think what the type declaration of a function should be before concerning ourselves with the implementation and then write it down. In Haskell, a function's type declaration tells us a whole lot about the function, due to the very strong type system.
 
-![HA HA HA](http://s3.amazonaws.com/lyah/calculator.png)
+![[LYHfGG_74_calculator.png]]
 
 Cool. When implementing a solution to a problem in Haskell, it's also good to think back on how you did it by hand and maybe try to see if you can gain any insight from that. Here we see that we treated every number or operator that was separated by a space as a single item. So it might help us if we start by breaking a string like `"10 4 3 + 2 * -"` into a list of items like `["10","4","3","+","2","*","-"]`.
 
@@ -6592,7 +6592,7 @@ Our next problem is this: your plane has just landed in England and you rent a c
 
 There are two main roads going from Heathrow to London and there's a number of regional roads crossing them. It takes you a fixed amount of time to travel from one crossroads to another. It's up to you to find the optimal path to take so that you get to London as fast as you can! You start on the left side and can either cross to the other main road or go forward.
 
-![Heathrow - London](http://s3.amazonaws.com/lyah/roads.png)
+![[LYHfGG_75_roads.png]]
 
 As you can see in the picture, the shortest path from Heathrow to London in this case is to start on main road B, cross over, go forward on A, cross over again and then go forward twice on B. If we take this path, it takes us 75 minutes. Had we chosen any other path, it would take more than that.
 
@@ -6627,7 +6627,7 @@ Okay, so how would we figure out the shortest path from Heathrow to London by ha
 
 That's not a good solution then. Here's a simplified picture of our road system:
 
-![roads](http://s3.amazonaws.com/lyah/roads_simple.png)
+![[LYHfGG_76_roads_simple.png]]
 
 Alright, can you figure out what the shortest path to the first crossroads (the first blue dot on A, marked _A1_) on road A is? That's pretty trivial. We just see if it's shorter to go directly forward on A or if it's shorter to go forward on B and then cross over. Obviously, it's cheaper to go forward via B and then cross over because that takes 40 minutes, whereas going directly via A takes 50 minutes. What about crossroads _B1_? Same thing. We see that it's a lot cheaper to just go directly via B (incurring a cost of 10 minutes), because going via A and then crossing over would take us a whole 80 minutes!
 
@@ -6718,7 +6718,7 @@ roadStep (pathA, pathB) (Section a b c) =
     in  (newPathToA, newPathToB)
 ```
 
-![this is you](http://s3.amazonaws.com/lyah/guycar.png)
+![[LYHfGG_77_guycar.png]]
 
 What's going on here? First, calculate the optimal price on road A based on the best so far on A and we do the same for B. We do `sum $ map snd pathA`, so if `pathA` is something like `[(A,100),(C,20)]`, `priceA` becomes `120`. `forwardPriceToA` is the price that we would pay if we went to the next crossroads on A if we went there directly from the previous crossroads on A. It equals the best price to our previous A, plus the length of the A part of the current section. `crossPriceToA` is the price that we would pay if we went to the next A by going forward from the previous B and then crossing over. It's the best price to the previous B so far plus the B length of the section plus the C length of the section. We determine `forwardPriceToB` and `crossPriceToB` in the same manner.
 
@@ -6823,7 +6823,7 @@ Typeclasses are open, which means that we can define our own data type, think ab
 
 ## Functors redux
 
-![frogs dont even need money](http://s3.amazonaws.com/lyah/frogtor.png)
+![[LYHfGG_78_frogtor.png]]
 
 We've already talked about functors in [their own little section](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#the-functor-typeclass). If you haven't read it yet, you should probably give it a glance right now, or maybe later when you have more time. Or you can just pretend you read it.
 
@@ -6865,7 +6865,7 @@ main = do line <- fmap reverse getLine
           putStrLn $ "Yes, you really said" ++ line ++ " backwards!"
 ```
 
-![w00ooOoooOO](http://s3.amazonaws.com/lyah/alien.png)
+![[LYHfGG_79_alien.png]]
 
 Just like when we `fmap` `reverse` over `Just "blah"` to get `Just "halb"`, we can `fmap` `reverse` over `getLine`. `getLine` is an I/O action that has a type of `IO String` and mapping `reverse` over it gives us an I/O action that will go out into the real world and get a line and then apply `reverse` to its result. Like we can apply a function to something that's inside a `Maybe` box, we can apply a function to what's inside an `IO` box, only it has to go out into the real world to get something. Then when we bind it to a name by using `<-`, the name will reflect the result that already has `reverse` applied to it.
 
@@ -6939,7 +6939,7 @@ How does the box analogy hold here? Well, if you stretch it, it holds. When we u
 
 The fact that `fmap` is function composition when used on functions isn't so terribly useful right now, but at least it's very interesting. It also bends our minds a bit and let us see how things that act more like computations than boxes (`IO` and `(->) r`) can be functors. The function being mapped over a computation results in the same computation but the result of that computation is modified with the function.
 
-![lifting a function is easier than lifting a million pounds](http://s3.amazonaws.com/lyah/lifter.png)
+![[LYHfGG_80_lifter.png]]
 
 Before we go on to the rules that `fmap` should follow, let's think about the type of `fmap` once more. Its type is `fmap :: (a -> b) -> f a -> f b`. We're missing the class constraint `(Functor f) =>`, but we left it out here for brevity, because we're talking about functors anyway so we know what the `f` stands for. When we first learned about [curried functions](http://learnyouahaskell.com/higher-order-functions#curried-functions), we said that all Haskell functions actually take one parameter. A function `a -> b -> c` actually takes just one parameter of type `a` and then returns a function `b -> c`, which takes one parameter and returns a `c`. That's how if we call a function with too few parameters (i.e. partially apply it), we get back a function that takes the number of parameters that we left out (if we're thinking about functions as taking several parameters again). So `a -> b -> c` can be written as `a -> (b -> c)`, to make the currying more apparent.
 
@@ -7008,7 +7008,7 @@ We imagine that `id` plays the role of the `f` parameter in the implementati
 
 Seeing that mapping `id` over a `Nothing` value returns the same value is trivial. So from these two equations in the implementation for `fmap`, we see that the law `fmap id = id` holds.
 
-![justice is blind, but so is my dog](http://s3.amazonaws.com/lyah/justice.png)
+![[LYHfGG_81_justice.png]]
 
 **The second law says that composing two functions and then mapping the resulting function over a functor should be the same as first mapping one function over the functor and then mapping the other one.** Formally written, that means that `fmap (f . g) = fmap f . fmap g`. Or to write it in another way, for any functor _F_, the following should hold: `fmap (f . g) F = fmap f (fmap g F)`.
 
@@ -7081,7 +7081,7 @@ If you think of functors as things that output values, you can think of mapping 
 
 ## Applicative functors
 
-![disregard this analogy](http://s3.amazonaws.com/lyah/present.png)
+![[LYHfGG_82_present.png]]
 
 In this section, we'll take a look at applicative functors, which are beefed up functors, represented in Haskell by the `Applicative` typeclass, found in the `Control.Applicative` module.
 
@@ -7175,7 +7175,7 @@ ghci> pure (+) <*> Nothing <*> Just 5
 Nothing
 ```
 
-![whaale](http://s3.amazonaws.com/lyah/whale.png)
+![[LYHfGG_83_whale.png]]
 
 What's going on here? Let's take a look, step by step. `<*>` is left-associative, which means that `pure (+) <*> Just 3 <*> Just 5` is the same as `(pure (+) <*> Just 3) <*> Just 5`. First, the `+` function is put in a functor, which is in this case a `Maybe` value that contains the function. So at first, we have `pure (+)`, which is `Just (+)`. Next, `Just (+) <*> Just 3` happens. The result of this is `Just (3+)`. This is because of partial application. Only applying `3` to the `+` function results in a function that takes one parameter and adds 3 to it. Finally, `Just (3+) <*> Just 5` is carried out, which results in a `Just 8`.
 
@@ -7290,7 +7290,7 @@ instance Applicative IO where
         return (f x)
 ```
 
-![ahahahah!](http://s3.amazonaws.com/lyah/knight.png)
+![[LYHfGG_84_knight.png]]
 
 Since `pure` is all about putting a value in a minimal context that still holds it as its result, it makes sense that `pure` is just `return`, because `return` does exactly that; it makes an I/O action that doesn't do anything, it just yields some value as its result, but it doesn't really do any I/O operations like printing to the terminal or reading from a file.
 
@@ -7369,7 +7369,7 @@ ghci> (\x y z -> [x,y,z]) <$> (+3) <*> (*2) <*> (/2) $ 5
 [8.0,10.0,2.5]
 ```
 
-![SLAP](http://s3.amazonaws.com/lyah/jazzb.png)
+![[LYHfGG_85_jazzb.png]]
 
 Same here. We create a function that will call the function `\x y z -> [x,y,z]` with the eventual results from `(+3)`, `(*2)` and `(/2)`. The `5` gets fed to each of the three functions and then `\x y z -> [x, y, z]` gets called with those results.
 
@@ -7520,12 +7520,12 @@ ghci> [[x,y,z] | x <- [1,2], y <- [3,4], z <- [5,6]]
 
 This might be a bit hard to grasp, but if you play with it for a while, you'll see how it works. Let's say that we're doing `sequenceA [[1,2],[3,4]]`. To see how this happens, let's use the `sequenceA (x:xs) = (:) <$> x <*> sequenceA xs` definition of `sequenceA` and the edge condition `sequenceA [] = pure []`. You don't have to follow this evaluation, but it might help you if have trouble imagining how `sequenceA` works on lists of lists, because it can be a bit mind-bending.
 
-- We start off with sequenceA [[1,2],[3,4]]
-- That evaluates to (:) <$> [1,2] <*> sequenceA [[3,4]]
-- Evaluating the inner sequenceA further, we get (:) <$> [1,2] <*> ((:) <$> [3,4] <*> sequenceA [])
-- We've reached the edge condition, so this is now (:) <$> [1,2] <*> ((:) <$> [3,4] <*> [[]])
-- Now, we evaluate the (:) <$> [3,4] <*> [[]] part, which will use : with every possible value in the left list (possible values are 3 and 4) with every possible value on the right list (only possible value is []), which results in [3:[], 4:[]], which is [[3],[4]]. So now we have (:) <$> [1,2] <*> [[3],[4]]
-- Now, : is used with every possible value from the left list (1 and 2) with every possible value in the right list ([3] and [4]), which results in [1:[3], 1:[4], 2:[3], 2:[4]], which is [[1,3],[1,4],[2,3],[2,4]
+- We start off with `sequenceA [[1,2],[3,4]]`
+- That evaluates to `(:) <$> [1,2] <*> sequenceA [[3,4]]`
+- Evaluating the inner sequenceA further, we get `(:) <$> [1,2] <*> ((:) <$> [3,4] <*> sequenceA [])`
+- We've reached the edge condition, so this is now `(:) <$> [1,2] <*> ((:) <$> [3,4] <*> [[]])`
+- Now, we evaluate the `(:) <$> [3,4] <*> [[]]` part, which will use `:` with every possible value in the left list (possible values are `3` and `4`) with every possible value on the right list (only possible value is `[]`), which results in `[3:[], 4:[]]`, which is `[[3],[4]]`. So now we have `(:) <$> [1,2] <*> [[3],[4]]`
+- Now, : is used with every possible value from the left list (`1` and `2`) with every possible value in the right list (`[3]` and `[4]`), which results in `[1:[3], 1:[4], 2:[3], 2:[4]]`, which is `[[1,3],[1,4],[2,3],[2,4]`
 
 Doing `(+) <$> [1,2] <*> [4,5,6]`results in a non-deterministic computation `x + y` where `x` takes on every value from `[1,2]` and `y` takes on every value from `[4,5,6]`. We represent that as a list which holds all of the possible results. Similarly, when we do `sequence [[1,2],[3,4],[5,6],[7,8]]`, the result is a non-deterministic computation `[x,y,z,w]`, where `x` takes on every value from `[1,2]`, `y` takes on every value from `[3,4]` and so on. To represent the result of that non-deterministic computation, we use a list, where each element in the list is one possible list. That's why the result is a list of lists.
 
@@ -7552,7 +7552,7 @@ In conclusion, applicative functors aren't just interesting, they're also useful
 
 ## The newtype keyword
 
-![why_ so serious?](http://s3.amazonaws.com/lyah/maoi.png)
+![[LYHfGG_86_maoi.png]]
 
 So far, we've learned how to make our own algebraic data types by using the **data** keyword. We've also learned how to give existing types synonyms with the **type** keyword. In this section, we'll be taking a look at how to make new types out of existing data types by using the **newtype** keyword and why we'd want to do that in the first place.
 
@@ -7656,7 +7656,7 @@ And then implement `fmap`. All the type parameters add up because the `Maybe`�
 fmap :: (a -> b) -> Maybe a -> Maybe b
 ```
 
-![wow, very evil](http://s3.amazonaws.com/lyah/krakatoa.png)
+![[LYHfGG_87_krakatoa.png]]
 
 Isn't that just peachy? Now what if we wanted to make the tuple an instance of `Functor` in such a way that when we `fmap` a function over a tuple, it gets applied to the first component of the tuple? That way, doing `fmap (+3) (1,1)` would result in `(4,1)`. It turns out that writing the instance for that is kind of hard. With `Maybe`, we just say `instance Functor Maybe where` because only type constructors that take exactly one parameter can be made an instance of `Functor`. But it seems like there's no way to do something like that with `(a,b)` so that the type parameter `a` ends up being the one that changes when we use `fmap`. To get around this, we can _newtype_ our tuple in such a way that the second type parameter represents the type of the first component in the tuple:
 
@@ -7746,7 +7746,7 @@ ghci> helloMe undefined
 "hello"
 ```
 
-![top of the mornin to ya!!!](http://s3.amazonaws.com/lyah/shamrock.png)
+![[LYHfGG_88_shamrock.png]]
 
 It worked! Hmmm, why is that? Well, like we've said, when we use _newtype_, Haskell can internally represent the values of the new type in the same way as the original values. It doesn't have to add another box around them, it just has to be aware of the values being of different types. And because Haskell knows that types made with the _newtype_ keyword can only have one constructor, it doesn't have to evaluate the value passed to the function to make sure that it conforms to the `(CoolBool _)` pattern because _newtype_ types can only have one possible value constructor and one field!
 
@@ -7789,7 +7789,7 @@ If you just want your type signatures to look cleaner and be more descriptive, y
 
 ## Monoids
 
-![wow this is pretty much the gayest pirate ship ever](http://s3.amazonaws.com/lyah/pirateship.png)
+![[LYHfGG_89_pirateship.png]]
 
 Type classes in Haskell are used to present an interface for types that have some behavior in common. We started out with simple type classes like `Eq`, which is for types whose values can be equated, and `Ord`, which is for things that can be put in an order and then moved on to more interesting ones, like `Functor` and `Applicative`.
 
@@ -7839,7 +7839,7 @@ class Monoid m where
     mconcat = foldr mappend mempty
 ```
 
-![woof dee do!!!](http://s3.amazonaws.com/lyah/balloondog.png)
+![[LYHfGG_90_balloondog.png]]
 
 The `Monoid` type class is defined in `import Data.Monoid`. Let's take some time and get properly acquainted with it.
 
@@ -7890,7 +7890,7 @@ ghci> mempty :: [a]
 []
 ```
 
-![smug as hell](http://s3.amazonaws.com/lyah/smug.png)
+![[LYHfGG_91_smug.png]]
 
 Notice that in the last line, we had to write an explicit type annotation, because if we just did `mempty`, GHCi wouldn't know which instance to use, so we had to say we want the list instance. We were able to use the general type of `[a]` (as opposed to specifying `[Int]` or `[String]`) because the empty list can act as if it contains any type.
 
@@ -8048,7 +8048,7 @@ instance Monoid Ordering where
     GT `mappend` _ = GT
 ```
 
-![did anyone ORDER pizza?!?! I can't BEAR these puns!](http://s3.amazonaws.com/lyah/bear.png)
+![[LYHfGG_92_bear.png]]
 
 The instance is set up like this: when we `mappend` two `Ordering` values, the one on the left is kept, unless the value on the left is `EQ`, in which case the right one is the result. The identity is `EQ`. At first, this may seem kind of arbitrary, but it actually resembles the way we alphabetically compare words. We compare the first two letters and if they differ, we can already decide which word would go first in a dictionary. However, if the first two letters are equal, then we move on to comparing the next pair of letters and repeat the process.
 
@@ -8257,7 +8257,7 @@ instance F.Foldable Tree where
                              F.foldMap f r
 ```
 
-![find the visual pun or whatever](http://s3.amazonaws.com/lyah/accordion.png)
+![[LYHfGG_93_accordion.png]]
 
 We think like this: if we are provided with a function that takes an element of our tree and returns a monoid value, how do we reduce our whole tree down to one single monoid value? When we were doing `fmap` over our tree, we applied the function that we were mapping to a node and then we recursively mapped the function over the left sub-tree as well as the right one. Here, we're tasked with not only mapping a function, but with also joining up the results into a single monoid value by using `mappend`. First we consider the case of the empty tree — a sad and lonely tree that has no values or sub-trees. It doesn't hold any value that we can give to our monoid-making function, so we just say that if our tree is empty, the monoid value it becomes is `mempty`.
 
@@ -8319,7 +8319,7 @@ When we first talked about functors, we saw that they were a useful concept for 
 
 In this chapter, we'll learn about monads, which are just beefed up applicative functors, much like applicative functors are only beefed up functors.
 
-![more cool than u](http://s3.amazonaws.com/lyah/smugpig.png)
+![[LYHfGG_94_smugpig.png]]
 
 When we started off with functors, we saw that it's possible to map functions over various data types. We saw that for this purpose, the `Functor` type class was introduced and it had us asking the question: when we have a function of type `a -> b` and some data type `f a`, how do we map that function over the data type to end up with `f b`? We saw how to map something over a `Maybe a`, a list `[a]`, an `IO a` etc. We even saw how to map a function `a -> b` over other functions of type `r -> a` to get functions of type `r -> b`. To answer this question of how to map a function over some data type, all we had to do was look at the type of `fmap`:
 
@@ -8364,7 +8364,7 @@ When we have a normal value `a` and a normal function `a -> b` it's really e
 
 ## Getting our feet wet with Maybe
 
-![monads, grasshoppa](http://s3.amazonaws.com/lyah/buddha.png)
+![[LYHfGG_95_buddha.png]]
 
 Now that we have a vague idea of what monads are about, let's see if we can make that idea a bit less vague.
 
@@ -8473,7 +8473,7 @@ class Monad m where
     fail msg = error msg
 ```
 
-![this is you on monads](http://s3.amazonaws.com/lyah/kid.png)
+![[LYHfGG_96_kid.png]]
 
 Let's start with the first line. It says `class Monad m where`. But wait, didn't we say that monads are just beefed up applicative functors? Shouldn't there be a class constraint in there along the lines of `class (Applicative m) = > Monad m where` so that a type has to be an applicative functor first before it can be made a monad? Well, there should, but when Haskell was made, it hadn't occured to people that applicative functors are a good fit for Haskell so they weren't in there. But rest assured, every monad is an applicative functor, even if the `Monad` class declaration doesn't say so.
 
@@ -8481,7 +8481,7 @@ The first function that the `Monad` type class defines is `return`. It's the 
 
 Just a reminder: return is nothing like the return that's in most other languages. It doesn't end function execution or anything, it just takes a normal value and puts it in a context.
 
-![hmmm yaes](http://s3.amazonaws.com/lyah/tur2.png)
+![[LYHfGG_97_tur2.png]]
 
 The next function is `>>=`, or bind. It's like function application, only instead of taking a normal value and feeding it to a normal function, it takes a monadic value (that is, a value with a context) and feeds it to a function that takes a normal value but returns a monadic value.
 
@@ -8520,7 +8520,7 @@ Notice how when we fed `Just 9` to the function `\x -> return (x*10)`, the `
 
 ## Walk the line
 
-![pierre](http://s3.amazonaws.com/lyah/pierre.png)
+![[LYHfGG_98_pierre.png]]
 
 Now that we know how to feed a `Maybe a` value to a function of type `a -> Maybe b` while taking into account the context of possible failure, let's see how we can use `>>=` repeatedly to handle computations of several `Maybe a` values.
 
@@ -8673,7 +8673,7 @@ ghci> return (0,0) >>= landLeft 1 >>= landRight 4 >>= landLeft (-1) >>= landRigh
 Nothing
 ```
 
-![iama banana](http://s3.amazonaws.com/lyah/banana.png)
+![[LYHfGG_99_banana.png]]
 
 Awesome. The final result represents failure, which is what we expected. Let's see how this result was obtained. First, `return` puts `(0,0)` into a default context, making it a `Just (0,0)`. Then, `Just (0,0) >>= landLeft 1` happens. Since the `Just (0,0)` is a `Just` value, `landLeft 1` gets applied to `(0,0)`, resulting in a `Just (1,0)`, because the birds are still relatively balanced. Next, `Just (1,0) >>= landRight 4` takes place and the result is `Just (1,4)` as the balance of the birds is still intact, although just barely. `Just (1,4)` gets fed to `landLeft (-1)`. This means that `landLeft (-1) (1,4)` takes place. Now because of how `landLeft` works, this results in a `Nothing`, because the resulting pole is off balance. Now that we have a `Nothing`, it gets fed to `landRight (-2)`, but because it's a `Nothing`, the result is automatically `Nothing`, as we have nothing to apply `landRight (-2)` to.
 
@@ -8737,7 +8737,7 @@ routine = case landLeft 1 (0,0) of
             Just pole3 -> landLeft 1 pole3
 ```
 
-![john joe glanton](http://s3.amazonaws.com/lyah/centaur.png)
+![[LYHfGG_100_centaur.png]]
 
 We land a bird on the left and then we examine the possibility of failure and the possibility of success. In the case of failure, we return a `Nothing`. In the case of success, we land birds on the right and then do the same thing all over again. Converting this monstrosity into a neat chain of monadic applications with `>>=` is a classic example of how the `Maybe` monad saves us a lot of time when we have to successively do computations that are based on computations that might have failed.
 
@@ -8802,7 +8802,7 @@ foo = do
     Just (show x ++ y)
 ```
 
-![90s owl](http://s3.amazonaws.com/lyah/owld.png)
+![[LYHfGG_101_owld.png]]
 
 It would seem as though we've gained the ability to temporarily extract things from `Maybe` values without having to check if the `Maybe` values are `Just` values or `Nothing` values at every step. How cool! If any of the values that we try to extract from are `Nothing`, the whole `do` expression will result in a `Nothing`. We're yanking out their (possibly existing) values and letting `>>=` worry about the context that comes with those values. It's important to remember that `do` expressions are just different syntax for chaining monadic values.
 
@@ -8924,7 +8924,7 @@ The failed pattern matching has caused a failure within the context of our monad
 
 ## The list monad
 
-![dead cat](http://s3.amazonaws.com/lyah/deadcat.png)
+![[LYHfGG_102_deadcat.png]]
 
 So far, we've seen how `Maybe` values can be viewed as values with a failure context and how we can incorporate failure handling into our code by using `>>=` to feed them to functions. In this section, we're going to take a look at how to use the monadic aspects of lists to bring non-determinism into our code in a clear and readable manner.
 
@@ -8983,7 +8983,7 @@ ghci> [1,2] >>= \n -> ['a','b'] >>= \ch -> return (n,ch)
 [(1,'a'),(1,'b'),(2,'a'),(2,'b')]
 ```
 
-![concatmap](http://s3.amazonaws.com/lyah/concatmap.png)
+![[LYHfGG_103_concatmap.png]]
 
 The list `[1,2]` gets bound to `n` and `['a','b']` gets bound to `ch`. Then, we do `return (n,ch)` (or `[(n,ch)]`), which means taking a pair of `(n,ch)` and putting it in a default minimal context. In this case, it's making the smallest possible list that still presents `(n,ch)` as the result and features as little non-determinism as possible. Its effect on the context is minimal. What we're saying here is this: for every element in `[1,2]`, go over every element in `['a','b']` and produce a tuple of one element from each list.
 
@@ -9099,7 +9099,7 @@ So filtering in list comprehensions is the same as using `guard`.
 
 Here's a problem that really lends itself to being solved with non-determinism. Say you have a chess board and only one knight piece on it. We want to find out if the knight can reach a certain position in three moves. We'll just use a pair of numbers to represent the knight's position on the chess board. The first number will determine the column he's in and the second number will determine the row.
 
-![hee haw im a horse](http://s3.amazonaws.com/lyah/chess.png)
+![[LYHfGG_104_chess.png]]
 
 Let's make a type synonym for the knight's current position on the chess board:
 
@@ -9186,7 +9186,7 @@ No! As an exercise, you can change this function so that when you can reach one 
 
 ## Monad laws
 
-![the court finds you guilty of peeing all over everything](http://s3.amazonaws.com/lyah/judgedog.png)
+![[LYHfGG_105_judgedog.png]]
 
 Just like applicative functors, and functors before them, monads come with a few laws that all monad instances must abide by. Just because something is made an instance of the `Monad` type class doesn't mean that it's a monad, it just means that it was made an instance of a type class. For a type to truly be a monad, the monad laws must hold for that type. These laws allow us to make reasonable assumptions about the type and its behavior.
 
@@ -9314,7 +9314,7 @@ In this chapter, we took a look at the basics of monads and learned how the `Ma
 
 # For a Few Monads More
 
-![there are two kinds of people in the world, my friend. those who learn them a haskell and those who have the job of coding java](http://s3.amazonaws.com/lyah/clint.png)
+![[LYHfGG_106_clint.png]]
 
 We've seen how monads can be used to take values with contexts and apply them to functions and how using `>>=` or `do` notation allows us to focus on the values themselves while the context gets handled for us.
 
@@ -9353,7 +9353,7 @@ ghci> isBigGang 30
 (True,"Compared gang size to 9.")
 ```
 
-![when you have to poop, poop, don't talk](http://s3.amazonaws.com/lyah/tuco.png)
+![[LYHfGG_107_tuco.png]]
 
 So far so good. `isBigGang` takes a normal value and returns a value with a context. As we've just seen, feeding it a normal value is not a problem. Now what if we already have a value that has a log string attached to it, such as `(3, "Smallish gang.")`, and we want to feed it to `isBigGang`? It seems like once again, we're faced with this question: if we have a function that takes a normal value and returns a value with a context, how do we take a value with a context and feed it to the function?
 
@@ -9479,7 +9479,7 @@ instance (Monoid w) => Monad (Writer w) where
     (Writer (x,v)) >>= f = let (Writer (y, v')) = f x in Writer (y, v `mappend` v')
 ```
 
-![when you have to poop, poop, don't talk](http://s3.amazonaws.com/lyah/angeleyes.png)
+![[LYHfGG_108_angeleyes.png]]
 
 First off, let's examine `>>=`. Its implementation is essentially the same as `applyLog`, only now that our tuple is wrapped in the `Writer` `newtype`, we have to unwrap it when pattern matching. We take the value `x` and apply the function `f` to it. This gives us a `Writer w a` value and we use a `let` expression to pattern match on it. We present `y` as the new result and use `mappend` to combine the old monoid value with the new one. We pack that up with the result value in a tuple and then wrap that with the `Writer` constructor so that our result is a `Writer` value instead of just an unwrapped tuple.
 
@@ -9656,7 +9656,7 @@ It's inefficient because it ends up associating the use of `++` to the left in
 
 ### Difference lists
 
-![cactuses](http://s3.amazonaws.com/lyah/cactus.png)
+![[LYHfGG_109_cactus.png]]
 
 Because lists can sometimes be inefficient when repeatedly appended in this manner, it's best to use a data structure that always supports efficient appending. One such data structure is the difference list. A difference list is similar to a list, only instead of being a normal list, it's a function that takes a list and prepends another list to it. The difference list equivalent of a list like `[1,2,3]` would be the function `\xs -> [1,2,3] ++ xs`. A normal empty list is `[]`, whereas an empty difference list is the function `\xs -> [] ++ xs`.
 
@@ -9785,7 +9785,7 @@ Oh, by the way, the song Final Countdown by Europe is now stuck in your head. En
 
 ## Reader? Ugh, not this joke again.
 
-![bang youre dead](http://s3.amazonaws.com/lyah/revolver.png)
+![[LYHfGG_110_revolver.png]]
 
 In the [chapter about applicatives](http://learnyouahaskell.com/functors-applicative-functors-and-monoids), we saw that the function type, `(->) r` is an instance of `Functor`. Mapping a function `f` over a function `g` will make a function that takes the same thing as `g`, applies `g` to it and then applies `f` to that result. So basically, we're making a new function that's like `g`, only before returning its result, `f` gets applied to that result as well. For instance:
 
@@ -9853,7 +9853,7 @@ We see that the reader monad allows us to treat functions as values with a conte
 
 ## Tasteful stateful computations
 
-![don't jest with texas](http://s3.amazonaws.com/lyah/texas.png)
+![[LYHfGG_111_texas.png]]
 
 Haskell is a pure language and because of that, our programs are made of functions that can't change any global state or variables, they can only do some computations and return them results. This restriction actually makes it easier to think about our programs, as it frees us from worrying what every variable's value is at some point in time. However, some problems are inherently stateful in that they rely on some state that changes over time. While such problems aren't a problem for Haskell, they can be a bit tedious to model sometimes. That's why Haskell features a thing called the state monad, which makes dealing with stateful problems a breeze while still keeping everything nice and pure.
 
@@ -9954,7 +9954,7 @@ instance Monad (State s) where
 
 Let's take a gander at `return` first. Our aim with `return` is to take a value and make a stateful computation that always has that value as its result. That's why we just make a lambda `\s -> (x,s)`. We always present `x` as the result of the stateful computation and the state is kept unchanged, because `return` has to put a value in a minimal context. So `return` will make a stateful computation that presents a certain value as the result and keeps the state unchanged.
 
-![im a cop](http://s3.amazonaws.com/lyah/badge.png)
+![[LYHfGG_112_badge.png]]
 
 What about `>>=`? Well, the result of feeding a stateful computation to a function with `>>=` has to be a stateful computation, right? So we start off with the `State` `newtype` wrapper and then we type out a lambda. This lambda will be our new stateful computation. But what goes on in it? Well, we somehow have to extract the result value from the first stateful computation. Because we're in a stateful computation right now, we can give the stateful computation `h` our current state `s`, which results in a pair of result and a new state: `(a, newState)`. Every time so far when we were implementing `>>=`, once we had the extracted the result from the monadic value, we applied the function `f` to it to get the new monadic value. In `Writer`, after doing that and getting the new monadic value, we still had to make sure that the context was taken care of by `mappend`ing the old monoid value with the new one. Here, we do `f a` and we get a new stateful computation `g`. Now that we have a new stateful computation and a new state (goes by the name of `newState`) we just apply that stateful computation `g` to the `newState`. The result is a tuple of final result and final state!
 
@@ -10192,7 +10192,7 @@ In this section, we're going to explore a few functions that either operate on m
 
 ### liftM and friends
 
-![im a cop too](http://s3.amazonaws.com/lyah/wolf.png)
+![[LYHfGG_113_wolf.png]]
 
 When we started our journey to the top of Monad Mountain, we first looked at functors, which are for things that can be mapped over. Then, we learned about improved functors called applicative functors, which allowed us to apply normal functions between several applicative values as well as to take a normal value and put it in some default context. Finally, we introduced monads as improved applicative functors, which added the ability for these values with context to somehow be fed into normal functions.
 
@@ -10375,7 +10375,7 @@ joinedMaybes = do
     m
 ```
 
-![im a cop too as well also](http://s3.amazonaws.com/lyah/tipi.png)
+![[LYHfGG_114_tipi.png]]
 
 Perhaps the most interesting thing about `join` is that for every monad, feeding a monadic value to a function with `>>=` is the same thing as just mapping that function over the value and then using `join` to flatten the resulting nested monadic value! In other words, `m >>= f` is always the same thing as `join (fmap f m)`! It makes sense when you think about it. With `>>=`, we're always thinking about how to feed a monadic value to a function that takes a normal value but returns a monadic value. If we just map that function over the monadic value, we have a monadic value inside a monadic value. For instance, say we have `Just 9` and the function `\x -> Just (x+1)`. If we map this function over `Just 9`, we're left with `Just (Just 10)`.
 
@@ -10518,7 +10518,7 @@ Excellent! Because one number in the list was greater than `9`, the whole thing
 
 ### Making a safe RPN calculator
 
-![i've found yellow!](http://s3.amazonaws.com/lyah/miner.png)
+![[LYHfGG_115_miner.png]]
 
 When we were solving the problem of [implementing a RPN calculator](http://learnyouahaskell.com/reverse-polish-notation-calculator), we noted that it worked fine as long as the input that it got made sense. But if something went wrong, it caused our whole program to crash. Now that we know how to take some code that we have and make it monadic, let's take our RPN calculator and add error handling to it by taking advantage of the `Maybe` monad.
 
@@ -10681,7 +10681,7 @@ canReachIn x start end = end `elem` inMany x start
 
 ## Making monads
 
-![kewl](http://s3.amazonaws.com/lyah/spearhead.png)
+![[LYHfGG_116_spearhead.png]]
 
 In this section, we're going to look at an example of how a type gets made, identified as a monad and then given the appropriate `Monad` instance. We don't usually set out to make a monad with the sole purpose of making a monad. Instead, we usually make a type that whose purpose is to model an aspect of some problem and then later on if we see that the type represents a value with a context and can act like a monad, we give it a `Monad` instance.
 
@@ -10743,7 +10743,7 @@ Now the big question, is this a monad? Given how the list is a monad, this looks
 
 What about `>>=`? Seems kind of tricky, so let's make use of the fact that `m >>= f` always equals `join (fmap f m)` for monads and think about how we would flatten a probability list of probability lists. As an example, let's consider this list where there's a 25% chance that exactly one of `'a'` or `'b'` will happen. Both `'a'` and `'b'` are equally likely to occur. Also, there's a 75% chance that exactly one of `'c'` or `'d'` will happen. `'c'` and `'d'` are also equally likely to happen. Here's a picture of a probability list that models this scenario:
 
-![probs](http://s3.amazonaws.com/lyah/prob.png)
+![[LYHfGG_117_prob.png]]
 
 What are the chances for each of these letters to occur? If we were to draw this as just four boxes, each with a probability, what would those probabilities be? To find out, all we have to do is multiply each probability with all of probabilities that it contains. `'a'` would occur one time out of eight, as would `'b'`, because if we multiply one half by one quarter we get one eighth. `'c'` would happen three times out of eight because three quarters multiplied by one half is three eighths. `'d'` would also happen three times out of eight. If we sum all the probabilities, they still add up to one.
 
@@ -10776,7 +10776,7 @@ instance Monad Prob where
     fail _ = Prob []
 ```
 
-![ride em cowboy](http://s3.amazonaws.com/lyah/ride.png)
+![[LYHfGG_118_ride.png]]
 
 Because we already did all the hard work, the instance is very simple. We also defined the `fail` function, which is the same as it is for lists, so if there's a pattern match failure in a `do` expression, a failure occurs within the context of a probability list.
 
@@ -10823,7 +10823,7 @@ In this section, we went from having a question (what if lists also carried info
 
 # Zippers
 
-![hi im chet](http://learnyouahaskell.com/60sdude.png)
+![[LYHfGG_119_60sdude.png]]
 
 While Haskell's purity comes with a whole bunch of benefits, it makes us tackle some problems differently than we would in impure languages. Because of referential transparency, one value is as good as another in Haskell if it represents the same thing.
 
@@ -10871,7 +10871,7 @@ freeTree =
 
 And here's this tree represented graphically:
 
-![polly says her back hurts](http://learnyouahaskell.com/pollywantsa.png)
+![[LYHfGG_120_pollywantsa.png]]
 
 Notice that `W` in the tree there? Say we want to change it into a `P`. How would we go about doing that? Well, one way would be to pattern match on our tree until we find the element that's located by first going right and then left and changing said element. Here's the code for this:
 
@@ -10921,7 +10921,7 @@ In the next section, we'll find a better way of focusing on a sub-tree, one that
 
 ## A trail of breadcrumbs
 
-![whoop dee doo](http://learnyouahaskell.com/bread.png)
+![[LYHfGG_121_bread.png]]
 
 Okay, so for focusing on a sub-tree, we want something better than just a list of directions that we always follow from the root of our tree. Would it help if we start at the root of the tree and move either left or right one step at a time and sort of leave breadcrumbs? That is, when we go left, we remember that we went left and when we go right, we remember that we went right. Sure, we can try that.
 
@@ -10952,7 +10952,7 @@ ghci> goLeft (goRight (freeTree, []))
 (Node 'W' (Node 'C' Empty Empty) (Node 'R' Empty Empty),[L,R])
 ```
 
-![almostthere](http://learnyouahaskell.com/almostzipper.png)
+![[LYHfGG_122_almostzipper.png]]
 
 Okay, so now we have a tree that has `'W'` in its root and `'C'` in the root of its left sub-tree and `'R'` in the root of its right sub-tree. The breadcrumbs are `[L,R]`, because we first went right and then left.
 
@@ -11019,7 +11019,7 @@ goUp (t, LeftCrumb x r:bs) = (Node x t r, bs)
 goUp (t, RightCrumb x l:bs) = (Node x l t, bs)
 ```
 
-![asstronaut](http://learnyouahaskell.com/asstronaut.png)
+![[LYHfGG_123_asstronaut.png]]
 
 We're focusing on the tree `t` and we check what the latest `Crumb` is. If it's a `LeftCrumb`, then we construct a new tree where our tree `t` is the left sub-tree and we use the information about the right sub-tree that we didn't visit and the element to fill out the rest of the `Node`. Because we moved back so to speak and picked up the last breadcrumb to recreate with it the parent tree, the new list of breadcrumbs doesn't contain it.
 
@@ -11105,7 +11105,7 @@ Zippers can be used with pretty much any data structure, so it's no surprise tha
 data List a = Empty | Cons a (List a) deriving (Show, Read, Eq, Ord)
 ```
 
-![the best damn thing](http://learnyouahaskell.com/picard.png)
+![[LYHfGG_124_picard.png]]
 
 Contrast this with our definition of our binary tree and it's easy to see how lists can be viewed as trees where each node has only one sub-tree.
 
@@ -11197,7 +11197,7 @@ That's actually what my disk contains right now.
 
 ### A zipper for our file system
 
-![spongedisk](http://learnyouahaskell.com/spongedisk.png)
+![[LYHfGG_125_spongedisk.png]]
 
 Now that we have a file system, all we need is a zipper so we can zip and zoom around it and add, modify and remove files as well as folders. Like with binary trees and lists, we're going to be leaving breadcrumbs that contain info about all the stuff that we chose not to visit. Like we said, a single breadcrumb should be kind of like a node, only it should contain everything except the sub-tree that we're currently focusing on. It should also note where the hole is so that once we move back up, we can plug our previous focus into the hole.
 
@@ -11245,7 +11245,7 @@ nameIs name (File fileName _) = name == fileName
 
 `fsTo` takes a `Name` and a `FSZipper` and returns a new `FSZipper` that focuses on the file with the given name. That file has to be in the current focused folder. This function doesn't search all over the place, it just looks at the current folder.
 
-![wow cool great](http://learnyouahaskell.com/cool.png)
+![[LYHfGG_126_cool.png]]
 
 First we use `break` to break the list of items in a folder into those that precede the file that we're searching for and those that come after it. If you remember, `break` takes a predicate and a list and returns a pair of lists. The first list in the pair holds items for which the predicate returns `False`. Then, once the predicate returns `True` for an item, it places that item and the rest of the list in the second item of the pair. We made an auxilliary function called `nameIs` that takes a name and a file system item and returns `True` if the names match.
 
@@ -11319,7 +11319,7 @@ goLeft :: Zipper a -> Zipper a
 goLeft (Node x l r, bs) = (l, LeftCrumb x r:bs)
 ```
 
-![falling for you](http://learnyouahaskell.com/bigtree.png)
+![[LYHfGG_127_bigtree.png]]
 
 But what if the tree we're stepping off from is an empty tree? That is, what if it's not a `Node`, but an `Empty`? In this case, we'd get a runtime error because the pattern match would fail and we have made no pattern to handle an empty tree, which doesn't have any sub-trees at all. So far, we just assumed that we'd never try to focus on the left sub-tree of an empty tree as its left sub-tree doesn't exist at all. But going to the left sub-tree of an empty tree doesn't make much sense, and so far we've just conveniently ignored this.
 
