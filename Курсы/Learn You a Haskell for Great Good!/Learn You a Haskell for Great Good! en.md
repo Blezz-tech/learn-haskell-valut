@@ -239,7 +239,7 @@ Much like shopping lists in the real world, lists in Haskell are very useful. It
 
 In Haskell, lists are a **homogenous** data structure. It stores several elements of the same type. That means that we can have a list of integers or a list of characters but we can't have a list that has a few integers and then a few characters. And now, a list!
 
-_Note_: We can use the let keyword to define a name right in GHCI. Doing let a = 1 inside GHCI is the equivalent of writing a = 1 in a script and then loading it.
+> **Note**: We can use the `let` keyword to define a name right in GHCI. Doing `let a = 1` inside GHCI is the equivalent of writing `a = 1` in a script and then loading it.
 
 ```haskell
 ghci> let lostNumbers = [4,8,15,16,23,42]
@@ -273,7 +273,7 @@ Notice how `:` takes a number and a list of numbers or a character and a list 
 
 `[1,2,3]` is actually just syntactic sugar for `1:2:3:[]`. `[]` is an empty list. If we prepend `3` to it, it becomes `[3]`. If we prepend `2` to that, it becomes `[2,3]`, and so on.
 
-**Note:** `[]`, `[[]]` and`[[],[],[]]` are all different things. The first one is an empty list, the seconds one is a list that contains one empty list, the third one is a list that contains three empty lists.
+> **Note:** `[]`, `[[]]` and `[[],[],[]]` are all different things. The first one is an empty list, the seconds one is a list that contains one empty list, the third one is a list that contains three empty lists.
 
 If you want to get an element out of a list by index, use `!!`. The indices start at 0.
 
@@ -653,7 +653,7 @@ ghci> snd ("Wow", False)
 False
 ```
 
-_Note:_ these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
+> **Note** these functions operate only on pairs. They won't work on triples, 4-tuples, 5-tuples, etc. We'll go over extracting data from tuples in different ways a bit later.
 
 A cool function that produces a list of pairs: `zip`. It takes two lists and then zips them together into one list by joining the matching elements into pairs. It's a really simple function but it has loads of uses. It's especially useful for when you want to combine two lists in a way or traverse two lists simultaneously. Here's a demonstration.
 
@@ -834,7 +834,7 @@ ghci> :t (==)
 (==) :: (Eq a) => a -> a -> Bool
 ```
 
-_Note_: the equality operator, == is a function. So are +, *, -, / and pretty much all operators. If a function is comprised only of special characters, it's considered an infix function by default. If we want to examine its type, pass it to another function or call it as a prefix function, we have to surround it in parentheses.
+> **Note**: the equality operator, `==` is a function. So are `+`, `*`, `-`, `/` and pretty much all operators. If a function is comprised only of special characters, it's considered an infix function by default. If we want to examine its type, pass it to another function or call it as a prefix function, we have to surround it in parentheses.
 
 Interesting. We see a new thing here, the `=>` symbol. Everything before the `=>` symbol is called a **class constraint**. We can read the previous type declaration like this: the equality function takes any two values that are of the same type and returns a `Bool`. The type of those two values must be a member of the `Eq` class (this was the class constraint).
 
@@ -1118,7 +1118,7 @@ Should a pattern match fail, it will just move on to the next element.
 
 Lists themselves can also be used in pattern matching. You can match with the empty list `[]` or any pattern that involves `:` and the empty list. But since `[1,2,3]` is just syntactic sugar for `1:2:3:[]`, you can also use the former pattern. A pattern like `x:xs` will bind the head of the list to `x` and the rest of it to `xs`, even if there's only one element so `xs` ends up being an empty list.
 
-_Note_: The x:xs pattern is used a lot, especially with recursive functions. But patterns that have : in them only match against lists of length 1 or more.
+> **Note**: The `x:xs` pattern is used a lot, especially with recursive functions. But patterns that have `:` in them only match against lists of length 1 or more.
 
 If you want to bind, say, the first three elements to variables and the rest of the list to another variable, you can use something like `x:y:z:zs`. It will only match against lists that have three elements or more.
 
@@ -1266,7 +1266,7 @@ ghci> 3 `myCompare` 2
 GT
 ```
 
-_Note:_ Not only can we call functions as infix with backticks, we can also define them using backticks. Sometimes it's easier to read that way.
+> **Note** Not only can we call functions as infix with backticks, we can also define them using backticks. Sometimes it's easier to read that way.
 
 ## Where!?
 
@@ -1536,7 +1536,7 @@ replicate' n x
 
 We used guards here instead of patterns because we're testing for a boolean condition. If `n` is less than or equal to 0, return an empty list. Otherwise return a list that has `x` as the first element and then `x` replicated n-1 times as the tail. Eventually, the `(n-1)` part will cause our function to reach the edge condition.
 
-_Note:_ Num is not a subclass of Ord. That means that what constitutes for a number doesn't really have to adhere to an ordering. So that's why we have to specify both the Num and Ord class constraints when doing addition or subtraction and also comparison.
+> **Note** `Num` is not a subclass of `Ord`. That means that what constitutes for a number doesn't really have to adhere to an ordering. So that's why we have to specify both the `Num` and `Ord` class constraints when doing addition or subtraction and also comparison.
 
 Next up, we'll implement `take`. It takes a certain number of elements from a list. For instance, `take 3 [5,4,3,2,1]` will return `[5,4,3]`. If we try to take 0 or less elements from a list, we get an empty list. Also if we try to take anything from an empty list, we get an empty list. Notice that those are two edge conditions right there. So let's write that out:
 
@@ -1695,7 +1695,7 @@ compareWithHundred = compare 100
 
 The type declaration stays the same, because `compare 100` returns a function. Compare has a type of `(Ord a) => a -> (a -> Ordering)` and calling it with `100` returns a `(Num a, Ord a) => a -> Ordering`. The additional class constraint sneaks up there because `100` is also part of the `Num` typeclass.
 
-_Yo!_ Make sure you really understand how curried functions and partial application work because they're really important!
+> **Yo!**  Make sure you really understand how curried functions and partial application work because they're really important!
 
 Infix functions can also be partially applied by using sections. To section an infix function, simply surround it with parentheses and only supply a parameter on one side. That creates a function that takes one parameter and then applies it to the side that's missing an operand. An insultingly trivial function:
 
@@ -1740,7 +1740,7 @@ applyTwice f x = f (f x)
 
 First of all, notice the type declaration. Before, we didn't need parentheses because `->` is naturally right-associative. However, here, they're mandatory. They indicate that the first parameter is a function that takes something and returns that same thing. The second parameter is something of that type also and the return value is also of the same type. We could read this type declaration in the curried way, but to save ourselves a headache, we'll just say that this function takes two parameters and returns one thing. The first parameter is a function (of type `a -> a`) and the second is that same `a`. The function can also be `Int -> Int` or `String -> String` or whatever. But then, the second parameter to also has to be of that type.
 
-_Note:_ From now on, we'll say that functions take several parameters despite each function actually taking only one parameter and returning partially applied functions until we reach a function that returns a solid value. So for simplicity's sake, we'll say that a -> a -> a takes two parameters, even though we know what's really going on under the hood.
+> **Note** From now on, we'll say that functions take several parameters despite each function actually taking only one parameter and returning partially applied functions until we reach a function that returns a solid value. So for simplicity's sake, we'll say that `a -> a -> a` takes two parameters, even though we know what's really going on under the hood.
 
 The body of the function is pretty simple. We just use the parameter `f` as a function, applying `x` to it by separating them with a space and then applying the result to `f` again. Anyway, playing around with the function:
 
@@ -1941,7 +1941,7 @@ numLongChains = length (filter isLong (map chain [1..100]))
 
 We map the `chain` function to `[1..100]` to get a list of chains, which are themselves represented as lists. Then, we filter them by a predicate that just checks whether a list's length is longer than 15. Once we've done the filtering, we see how many chains are left in the resulting list.
 
-_Note:_ This function has a type of numLongChains :: Int because length returns an Int instead of a Num a for historical reasons. If we wanted to return a more general Num a, we could have used fromIntegral on the resulting length.
+> **Note** This function has a type of `numLongChains :: Int` because `length` returns an `Int` instead of a `Num a` for historical reasons. If we wanted to return a more general `Num a`, we could have used `fromIntegral` on the resulting length.
 
 Using `map`, we can also do stuff like `map (*) [0..]`, if not for any other reason than to illustrate how currying works and how (partially applied) functions are real values that you can pass around to other functions or put into lists (you just can't turn them to strings). So far, we've only mapped functions that take one parameter over lists, like `map (*2) [0..]` to get a list of type `(Num a) => [a]`, but we can also do `map (*) [0..]` without a problem. What happens here is that the number in the list is applied to the function `*`, which has a type of `(Num a) => a -> a -> a`. Applying only one parameter to a function that takes two parameters returns a function that takes one parameter. If we map `*` over the list `[0..]`, we get back a list of functions that only take one parameter, so `(Num a) => [a -> a]`. `map (*) [0..]` produces a list like the one we'd get by writing `[(0*),(1*),(2*),(3*),(4*),(5*)..`.
 
@@ -2980,7 +2980,7 @@ findKey :: (Eq k) => k -> [(k,v)] -> Maybe v
 findKey key = foldr (\(k,v) acc -> if key == k then Just v else acc) Nothing
 ```
 
-_Note:_ It's usually better to use folds for this standard list recursion pattern instead of explicitly writing the recursion because they're easier to read and identify. Everyone knows it's a fold when they see the foldr call, but it takes some more thinking to read explicit recursion.
+> **Note** It's usually better to use folds for this standard list recursion pattern instead of explicitly writing the recursion because they're easier to read and identify. Everyone knows it's a fold when they see the `foldr` call, but it takes some more thinking to read explicit recursion.
 
 ```haskell
 ghci> findKey "penny" phoneBook
@@ -4066,7 +4066,7 @@ type AssocList k v = [(k,v)]
 
 Now, a function that gets the value by a key in an association list can have a type of `(Eq k) => k -> AssocList k v -> Maybe v`. `AssocList` is a type constructor that takes two types and produces a concrete type, like `AssocList Int String`, for instance.
 
-_Fonzie says:_ Aaay! When I talk about _concrete types_ I mean like fully applied types like Map Int String or if we're dealin' with one of them polymorphic functions, [a] or (Ord a) => Maybe a and stuff. And like, sometimes me and the boys say that Maybe is a type, but we don't mean that, cause every idiot knows Maybe is a type constructor. When I apply an extra type to Maybe, like Maybe String, then I have a concrete type. You know, values can only have types that are concrete types! So in conclusion, live fast, love hard and don't let anybody else use your comb!
+> **Fonzie says:** Aaay! When I talk about _concrete types_ I mean like fully applied types like `Map Int String` or if we're dealin' with one of them polymorphic functions, `[a]` or `(Ord a) => Maybe a` and stuff. And like, sometimes me and the boys say that `Maybe` is a type, but we don't mean that, cause every idiot knows `Maybe` is a type constructor. When I apply an extra type to `Maybe`, like `Maybe String`, then I have a concrete type. You know, values can only have types that are concrete types! So in conclusion, live fast, love hard and don't let anybody else use your comb!
 
 Just like we can partially apply functions to get new functions, we can partially apply type parameters and get new type constructors from them. Just like we call a function with too few parameters to get back a new function, we can specify a type constructor with too few type parameters and get back a partially applied type constructor. If we wanted a type that represents a map (from `Data.Map`) from integers to something, we could either do this:
 
@@ -4082,7 +4082,7 @@ type IntMap = Map Int
 
 Either way, the `IntMap` type constructor takes one parameter and that is the type of what the integers will point to.
 
-_Oh yeah_. If you're going to try and implement this, you'll probably going to do a qualified import of Data.Map. When you do a qualified import, type constructors also have to be preceeded with a module name. So you'd write type IntMap = Map.Map Int.
+> **Oh yeah**. If you're going to try and implement this, you'll probably going to do a qualified import of `Data.Map`. When you do a qualified import, type constructors also have to be preceeded with a module name. So you'd write `type IntMap = Map.Map Int`.
 
 Make sure that you really understand the distinction between type constructors and value constructors. Just because we made a type synonym called `IntMap` or `AssocList` doesn't mean that we can do stuff like `AssocList [(1,2),(4,5),(7,9)]`. All it means is that we can refer to its type by using different names. We can do `[(1,2),(3,5),(8,9)] :: AssocList Int Int`, which will make the numbers inside assume a type of `Int`, but we can still use that list as we would any normal list that has pairs of integers inside. Type synonyms (and types generally) can only be used in the type portion of Haskell. We're in Haskell's type portion whenever we're defining new types (so in _data_ and _type_ declarations) or when we're located after a `::`. The `::` is in type declarations or in type annotations.
 
@@ -4346,11 +4346,11 @@ class Eq a where
 
 Woah, woah, woah! Some new strange syntax and keywords there! Don't worry, this will all be clear in a second. First off, when we write `class Eq a where`, this means that we're defining a new typeclass and that's called `Eq`. The `a` is the type variable and it means that `a` will play the role of the type that we will soon be making an instance of `Eq`. It doesn't have to be called `a`, it doesn't even have to be one letter, it just has to be a lowercase word. Then, we define several functions. It's not mandatory to implement the function bodies themselves, we just have to specify the type declarations for the functions.
 
-Some people might understand this better if we wrote class Eq equatable where and then specified the type declarations like (==) :: equatable -> equatable -> Bool.
+> Some people might understand this better if we wrote `class Eq equatable where` and then specified the type declarations like `(==) :: equatable -> equatable -> Bool`.
 
 Anyway, we _did_ implement the function bodies for the functions that `Eq` defines, only we defined them in terms of mutual recursion. We said that two instances of `Eq` are equal if they are not different and they are different if they are not equal. We didn't have to do this, really, but we did and we'll see how this helps us soon.
 
-If we have say class Eq a where and then define a type declaration within that class like (==) :: a -> -a -> Bool, then when we examine the type of that function later on, it will have the type of (Eq a) => a -> a -> Bool.
+> If we have say `class Eq a where` and then define a type declaration within that class like `(==) :: a -> -a -> Bool`, then when we examine the type of that function later on, it will have the type of `(Eq a) => a -> a -> Bool`.
 
 So once we have a class, what can we do with it? Well, not much, really. But once we start making types instances of that class, we start getting some nice functionality. So check out this type:
 
@@ -4460,7 +4460,7 @@ Most of the times, class constraints in _class_ declarations are used for maki
 
 When making instances, if you see that a type is used as a concrete type in the type declarations (like the `a` in `a -> a -> Bool`), you have to supply type parameters and add parentheses so that you end up with a concrete type.
 
-Take into account that the type you're trying to make an instance of will replace the parameter in the _class_ declaration. The a from class Eq a where will be replaced with a real type when you make an instance, so try mentally putting your type into the function type declarations as well. (==) :: Maybe -> Maybe -> Bool doesn't make much sense but (==) :: (Eq m) => Maybe m -> Maybe m -> Bool does. But this is just something to think about, because == will always have a type of (==) :: (Eq a) => a -> a -> Bool, no matter what instances we make.
+> Take into account that the type you're trying to make an instance of will replace the parameter in the _class_ declaration. The `a` from `class Eq a where` will be replaced with a real type when you make an instance, so try mentally putting your type into the function type declarations as well. `(==) :: Maybe -> Maybe -> Bool` doesn't make much sense but `(==) :: (Eq m) => Maybe m -> Maybe m -> Bool` does. But this is just something to think about, because `==` will always have a type of `(==) :: (Eq a) => a -> a -> Bool`, no matter what instances we make.
 
 Ooh, one more thing, check this out! If you want to see what the instances of a typeclass are, just do `:info YourTypeClass` in GHCI. So typing `:info Num` will show which functions the typeclass defines and it will give you a list of the types in the typeclass. `:info` works for types and type constructors too. If you do `:info Maybe`, it will show you all the typeclasses that `Maybe` is an instance of. Also `:info` can show you the type declaration of a function. I think that's pretty cool.
 
@@ -4671,13 +4671,13 @@ This also goes nicely with our box analogy if we think of the `Left` part as s
 
 Maps from `Data.Map` can also be made a functor because they hold values (or not!). In the case of `Map k v`, `fmap` will map a function `v -> v'` over a map of type `Map k v` and return a map of type `Map k v'`.
 
-Note, the ' has no special meaning in types just like it doesn't have special meaning when naming values. It's used to denote things that are similar, only slightly changed.
+> Note, the `'` has no special meaning in types just like it doesn't have special meaning when naming values. It's used to denote things that are similar, only slightly changed.
 
 Try figuring out how `Map k` is made an instance of `Functor` by yourself!
 
 With the `Functor` typeclass, we've seen how typeclasses can represent pretty cool higher-order concepts. We've also had some more practice with partially applying types and making instances. In one of the next chapters, we'll also take a look at some laws that apply for functors.
 
-_Just one more thing!_ Functors should obey some laws so that they may have some properties that we can depend on and not think about too much. If we use fmap (+1) over the list [1,2,3,4], we expect the result to be [2,3,4,5] and not its reverse, [5,4,3,2]. If we use fmap (\a -> a) (the identity function, which just returns its parameter) over some list, we expect to get back the same list as a result. For example, if we gave the wrong functor instance to our Tree type, using fmap over a tree where the left sub-tree of a node only has elements that are smaller than the node and the right sub-tree only has nodes that are larger than the node might produce a tree where that's not the case. We'll go over the functor laws in more detail in one of the next chapters.
+> **Just one more thing!** Functors should obey some laws so that they may have some properties that we can depend on and not think about too much. If we use `fmap (+1)` over the list `[1,2,3,4]`, we expect the result to be `[2,3,4,5]` and not its reverse, `[5,4,3,2]`. If we use `fmap (\a -> a)` (the identity function, which just returns its parameter) over some list, we expect to get back the same list as a result. For example, if we gave the wrong functor instance to our `Tree` type, using `fmap` over a tree where the left sub-tree of a node only has elements that are smaller than the node and the right sub-tree only has nodes that are larger than the node might produce a tree where that's not the case. We'll go over the functor laws in more detail in one of the next chapters.
 
 ## Kinds and some type-foo
 
@@ -4821,7 +4821,7 @@ Do not despair, all is not lost. It turns out that Haskell actually has a really
 
 Up until now, we've always loaded our functions into GHCI to test them out and play with them. We've also explored the standard library functions that way. But now, after eight or so chapters, we're finally going to write our first _real_ Haskell program! Yay! And sure enough, we're going to do the good old `"hello, world"` schtick.
 
-_Hey!_ For the purposes of this chapter, I'm going to assume you're using a unix-y environment for learning Haskell. If you're in Windows, I'd suggest you download [Cygwin](http://www.cygwin.com/), which is a Linux-like environment for Windows, A.K.A. just what you need.
+> **Hey!** For the purposes of this chapter, I'm going to assume you're using a unix-y environment for learning Haskell. If you're in Windows, I'd suggest you download [Cygwin](http://www.cygwin.com/), which is a Linux-like environment for Windows, A.K.A. just what you need.
 
 So, for starters, punch in the following in your favorite text editor:
 
@@ -4859,7 +4859,7 @@ putStrLn "hello, world" :: IO ()
 
 We can read the type of `putStrLn` like this: `putStrLn` takes a string and returns an **I/O action** that has a result type of `()` (i.e. the empty tuple, also know as unit). An I/O action is something that, when performed, will carry out an action with a side-effect (that's usually either reading from the input or printing stuff to the screen) and will also contain some kind of return value inside it. Printing a string to the terminal doesn't really have any kind of meaningful return value, so a dummy value of `()` is used.
 
-The empty tuple is a value of () and it also has a type of ().
+> The empty tuple is a value of `()` and it also has a type of `()`.
 
 So, when will an I/O action be performed? Well, this is where `main` comes in. An I/O action will be performed when we give it a name of `main` and then run our program.
 
@@ -4974,7 +4974,7 @@ reverseWords = unwords . map reverse . words
 
 To get a feel of what it does, you can run it before we go over the code.
 
-_Protip_: To run a program you can either compile it and then run the produced executable file by doing ghc --make helloworld and then ./helloworld or you can use the runhaskell command like so: runhaskell helloworld.hs and your program will be executed on the fly.
+> **Protip**: To run a program you can either compile it and then run the produced executable file by doing `ghc --make helloworld` and then `./helloworld` or you can use the `runhaskell` command like so: `runhaskell helloworld.hs` and your program will be executed on the fly.
 
 First, let's take a look at the `reverseWords` function. It's just a normal function that takes a string like `"hey there man"` and then calls `words` with it to produce a list of words like `["hey","there","man"]`. Then we map `reverse` on the list, getting `["yeh","ereht","nam"]` and then we put that back into one string by using `unwords` and the final result is `"yeh ereht nam"`. See how we used function composition here. Without function composition, we'd have to write something like `reverseWords st = unwords (map reverse (words st))`.
 
@@ -5024,7 +5024,7 @@ main = do
 
 When dealing with I/O _do_ blocks, we mostly use `return` either because we need to create an I/O action that doesn't do anything or because we don't want the I/O action that's made up from a _do_ block to have the result value of its last action, but we want it to have a different result value, so we use `return` to make an I/O action that always has our desired result contained and we put it at the end.
 
-A _do_ block can also have just one I/O action. In that case, it's the same as just writing the I/O action. Some people would prefer writing then do return () in this case because the _else_ also has a _do_.
+> A _do_ block can also have just one I/O action. In that case, it's the same as just writing the I/O action. Some people would prefer writing `then do return ()` in this case because the _else_ also has a _do_.
 
 Before we move on to files, let's take a look at some functions that are useful when dealing with I/O.
 
@@ -6128,7 +6128,7 @@ askForNumber gen = do
 
 We make a function `askForNumber`, which takes a random number generator and returns an I/O action that will prompt the user for a number and tell him if he guessed it right. In that function, we first generate a random number and a new generator based on the generator that we got as a parameter and call them `randNumber` and `newGen`. Let's say that the number generated was `7`. Then we tell the user to guess which number we're thinking of. We perform `getLine` and bind its result to `numberString`. When the user enters `7`, `numberString` becomes `"7"`. Next, we use `when` to check if the string the user entered is an empty string. If it is, an empty I/O action of `return ()` is performed, which effectively ends the program. If it isn't, the action consisting of that _do_ block right there gets performed. We use `read` on `numberString` to convert it to a number, so `number` is now `7`.
 
-**Excuse me!** If the user gives us some input here that read can't read (like "haha"), our program will crash with an ugly error message. If you don't want your program to crash on erronous input, use reads, which returns an empty list when it fails to read a string. When it succeeds, it returns a singleton list with a tuple that has our desired value as one component and a string with what it didn't consume as the other.
+> **Excuse me!** If the user gives us some input here that `read` can't read (like `"haha"`), our program will crash with an ugly error message. If you don't want your program to crash on erronous input, use `reads`, which returns an empty list when it fails to read a string. When it succeeds, it returns a singleton list with a tuple that has our desired value as one component and a string with what it didn't consume as the other.
 
 We check if the number that we entered is equal to the one generated randomly and give the user the appropriate message. And then we call `askForNumber` recursively, only this time with the new generator that we got, which gives us an I/O action that's just like the one we performed, only it depends on a different generator and we perform it.
 
@@ -6471,7 +6471,7 @@ Now that we know how we'd calculate any RPN expression by hand, let's think abou
 
 What would the type of that function be? We want it to take a string as a parameter and produce a number as its result. So it will probably be something like `solveRPN :: (Num a) => String -> a`.
 
-_Protip:_ it really helps to first think what the type declaration of a function should be before concerning ourselves with the implementation and then write it down. In Haskell, a function's type declaration tells us a whole lot about the function, due to the very strong type system.
+> **Protip:** it really helps to first think what the type declaration of a function should be before concerning ourselves with the implementation and then write it down. In Haskell, a function's type declaration tells us a whole lot about the function, due to the very strong type system.
 
 ![[LYHfGG_74_calculator.png]]
 
@@ -6635,7 +6635,7 @@ Now we know what the cheapest path to _A1_ is (go via B and then cross over, s
 
 Let's see what the shortest path to _A2_ would be. To get to _A2_, we'll either go directly to _A2_ from _A1_ or we'll go forward from _B1_ and then cross over (remember, we can only move forward or cross to the other side). And because we know the cost to _A1_ and _B1_, we can easily figure out what the best path to _A2_ is. It costs 40 to get to _A1_ and then 5 to get from _A1_ to _A2_, so that's `B, C, A` for a cost of 45. It costs only 10 to get to _B1_, but then it would take an additional 110 minutes to go to _B2_ and then cross over! So obviously, the cheapest path to _A2_ is `B, C, A`. In the same way, the cheapest way to _B2_ is to go forward from _A1_ and then cross over.
 
-_Maybe you're asking yourself_: but what about getting to _A2_ by first crossing over at _B1_ and then going on forward? Well, we already covered crossing from _B1_ to _A1_ when we were looking for the best way to _A1_, so we don't have to take that into account in the next step as well.
+> **Maybe you're asking yourself**: but what about getting to _A2_ by first crossing over at _B1_ and then going on forward? Well, we already covered crossing from _B1_ to _A1_ when we were looking for the best way to _A1_, so we don't have to take that into account in the next step as well.
 
 Now that we have the best path to _A2_ and _B2_, we can repeat this indefinitely until we reach the end. Once we've gotten the best paths for _A4_ and _B4_, the one that's cheaper is the optimal path!
 
@@ -6672,7 +6672,7 @@ type RoadSystem = [Section]
 
 This is pretty much perfect! It's as simple as it goes and I have a feeling it'll work perfectly for implementing our solution. `Section` is a simple algebraic data type that holds three integers for the lenghts of its three road parts. We introduce a type synonym as well, saying that `RoadSystem` is a list of sections.
 
-We could also use a triple of (Int, Int, Int) to represent a road section. Using tuples instead of making your own algebraic data types is good for some small localized stuff, but it's usually better to make a new type for things like this. It gives the type system more information about what's what. We can use (Int, Int, Int) to represent a road section or a vector in 3D space and we can operate on those two, but that allows us to mix them up. If we use Section and Vector data types, then we can't accidentally add a vector to a section of a road system.
+> We could also use a triple of `(Int, Int, Int)` to represent a road section. Using tuples instead of making your own algebraic data types is good for some small localized stuff, but it's usually better to make a new type for things like this. It gives the type system more information about what's what. We can use `(Int, Int, Int)` to represent a road section or a vector in 3D space and we can operate on those two, but that allows us to mix them up. If we use `Section` and `Vector` data types, then we can't accidentally add a vector to a section of a road system.
 
 Our road system from Heathrow to London can now be represented like this:
 
@@ -6698,7 +6698,7 @@ We're going to have to walk over the list with the sections from left to right a
 
 When doing the solution by hand, there was a step that we repeated over and over again. It involed checking the optimal paths on A and B so far and the current section to produce the new optimal paths on A and B. For instance, at the beginning the optimal paths were `[]` and `[]` for A and B respectively. We examined the section `Section 50 10 30` and concluded that the new optimal path to _A1_ is `[(B,10),(C,30)]` and the optimal path to _B1_ is `[(B,10)]`. If you look at this step as a function, it takes a pair of paths and a section and produces a new pair of paths. The type is `(Path, Path) -> Section -> (Path, Path)`. Let's go ahead and implement this function, because it's bound to be useful.
 
-_Hint:_ it will be useful because (Path, Path) -> Section -> (Path, Path) can be used as the binary function for a left fold, which has to have a type of a -> b -> a
+> **Hint:** it will be useful because `(Path, Path) -> Section -> (Path, Path)` can be used as the binary function for a left fold, which has to have a type of `a -> b -> a`
 
 ```haskell
 roadStep :: (Path, Path) -> Section -> (Path, Path)
@@ -6735,7 +6735,7 @@ ghci> roadStep ([], []) (head heathrowToLondon)
 
 Remember, the paths are reversed, so read them from right to left. From this we can read that the best path to the next A is to start on B and then cross over to A and that the best path to the next B is to just go directly forward from the starting point at B.
 
-_Optimization tip:_ when we do priceA = sum $ map snd pathA, we're calculating the price from the path on every step. We wouldn't have to do that if we implemented roadStep as a (Path, Path, Int, Int) -> Section -> (Path, Path, Int, Int) function where the integers represent the best price on A and B.
+> **Optimization tip:** when we do `priceA = sum $ map snd pathA`, we're calculating the price from the path on every step. We wouldn't have to do that if we implemented `roadStep` as a `(Path, Path, Int, Int) -> Section -> (Path, Path, Int, Int)` function where the integers represent the best price on A and B.
 
 Now that we have a function that takes a pair of paths and a section and produces a new optimal path, we can just easily do a left fold over a list of sections. `roadStep` is called with `([],[])` and the first section and returns a pair of optimal paths to that section. Then, it's called with that pair of paths and the next section and so on. When we've walked over all the sections, we're left with a pair of optimal paths and the shorter of them is our answer. With this in mind, we can implement `optimalPath`.
 
@@ -6829,7 +6829,7 @@ We've already talked about functors in [their own little section](http://learny
 
 Still, here's a quick refresher: Functors are things that can be mapped over, like lists, `Maybe`s, trees, and such. In Haskell, they're described by the typeclass `Functor`, which has only one typeclass method, namely `fmap`, which has a type of `fmap :: (a -> b) -> f a -> f b`. It says: give me a function that takes an `a` and returns a `b` and a box with an `a` (or several of them) inside it and I'll give you a box with a `b` (or several of them) inside it. It kind of applies the function to the element inside the box.
 
-_A word of advice._ Many times the box analogy is used to help you get some intuition for how functors work, and later, we'll probably use the same analogy for applicative functors and monads. It's an okay analogy that helps people understand functors at first, just don't take it too literally, because for some functors the box analogy has to be stretched really thin to still hold some truth. A more correct term for what a functor is would be _computational context_. The context might be that the computation can have a value or it might have failed (Maybe and Either a) or that there might be more values (lists), stuff like that.
+> **A word of advice.** Many times the box analogy is used to help you get some intuition for how functors work, and later, we'll probably use the same analogy for applicative functors and monads. It's an okay analogy that helps people understand functors at first, just don't take it too literally, because for some functors the box analogy has to be stretched really thin to still hold some truth. A more correct term for what a functor is would be _computational context_. The context might be that the computation can have a value or it might have failed (`Maybe` and `Either a`) or that there might be more values (lists), stuff like that.
 
 If we want to make a type constructor an instance of `Functor`, it has to have a kind of `* -> *`, which means that it has to take exactly one concrete type as a type parameter. For example, `Maybe` can be made an instance because it takes one type parameter to produce a concrete type, like `Maybe Int` or `Maybe String`. If a type constructor takes two parameters, like `Either`, we have to partially apply the type constructor until it only takes one type parameter. So we can't write `instance Functor Either where`, but we can write `instance Functor (Either a) where` and then if we imagine that `fmap` is only for `Either a`, it would have a type declaration of `fmap :: (b -> c) -> Either a b -> Either a c`. As you can see, the `Either a` part is fixed, because `Either a` takes only one type parameter, whereas just `Either` takes two so `fmap :: (b -> c) -> Either b -> Either c` wouldn't really make sense.
 
@@ -6893,7 +6893,7 @@ As you probably know, `intersperse '-' . reverse . map toUpper` is a function 
 
 Another instance of `Functor` that we've been dealing with all along but didn't know was a `Functor` is `(->) r`. You're probably slightly confused now, since what the heck does `(->) r` mean? The function type `r -> a` can be rewritten as `(->) r a`, much like we can write `2 + 3` as `(+) 2 3`. When we look at it as `(->) r a`, we can see `(->)` in a slighty different light, because we see that it's just a type constructor that takes two type parameters, just like `Either`. But remember, we said that a type constructor has to take exactly one type parameter so that it can be made an instance of `Functor`. That's why we can't make `(->)` an instance of `Functor`, but if we partially apply it to `(->) r`, it doesn't pose any problems. If the syntax allowed for type constructors to be partially applied with sections (like we can partially apply `+` by doing `(2+)`, which is the same as `(+) 2`), you could write `(->) r` as `(r ->)`. How are functions functors? Well, let's take a look at the implementation, which lies in `Control.Monad.Instances`
 
-We usually mark functions that take anything and return anything as a -> b. r -> a is the same thing, we just used different letters for the type variables.
+> We usually mark functions that take anything and return anything as `a -> b`. `r -> a` is the same thing, we just used different letters for the type variables.
 
 ```haskell
 instance Functor ((->) r) where
@@ -6954,7 +6954,7 @@ fmap (replicate 3) :: (Functor f) => f a -> f [a]
 
 The expression `fmap (*2)` is a function that takes a functor `f` over numbers and returns a functor over numbers. That functor can be a list, a `Maybe` , an `Either String`, whatever. The expression `fmap (replicate 3)` will take a functor over any type and return a functor over a list of elements of that type.
 
-When we say _a functor over numbers_, you can think of that as _a functor that has numbers in it_. The former is a bit fancier and more technically correct, but the latter is usually easier to get.
+> When we say _a functor over numbers_, you can think of that as _a functor that has numbers in it_. The former is a bit fancier and more technically correct, but the latter is usually easier to get.
 
 This is even more apparent if we partially apply, say, `fmap (++"!")` and then bind it to a name in GHCI.
 
@@ -7188,7 +7188,7 @@ This becomes even more handy and apparent if we consider the fact that `pure f 
 f <$> x = fmap f x
 ```
 
-_Yo!_ Quick reminder: type variables are independent of parameter names or other value names. The f in the function declaration here is a type variable with a class constraint saying that any type constructor that replaces f should be in the Functor typeclass. The f in the function body denotes a function that we map over x. The fact that we used f to represent both of those doesn't mean that they somehow represent the same thing.
+> **Yo!** Quick reminder: type variables are independent of parameter names or other value names. The `f` in the function declaration here is a type variable with a class constraint saying that any type constructor that replaces `f` should be in the `Functor` typeclass. The `f` in the function body denotes a function that we map over `x`. The fact that we used `f` to represent both of those doesn't mean that they somehow represent the same thing.
 
 By using `<$>`, the applicative style really shines, because now if we want to apply a function `f` between three applicative functors, we can write `f <$> x <*> y <*> z`. If the parameters weren't applicative functors but normal values, we'd write `f x y z`.
 
@@ -7331,7 +7331,7 @@ If you ever find yourself binding some I/O actions to names and then calling som
 
 Another instance of `Applicative` is `(->) r`, so functions. They are rarely used with the applicative style outside of code golf, but they're still interesting as applicatives, so let's take a look at how the function instance is implemented.
 
-If you're confused about what (->) r means, check out the previous section where we explain how (->) r is a functor.
+> If you're confused about what (->) r means, check out the previous section where we explain how (->) r is a functor.
 
 ```haskell
 instance Applicative ((->) r) where
@@ -7408,7 +7408,7 @@ ghci> getZipList $ (,,) <$> ZipList "dog" <*> ZipList "cat" <*> ZipList "rat"
 [('d','c','r'),('o','a','a'),('g','t','t')]
 ```
 
-The (,,) function is the same as \x y z -> (x,y,z). Also, the (,) function is the same as \x y -> (x,y).
+> The `(,,)` function is the same as `\x y z -> (x,y,z)`. Also, the `(,)` function is the same as `\x y -> (x,y)`.
 
 Aside from `zipWith`, the standard library has functions such as `zipWith3`, `zipWith4`, all the way up to 7. `zipWith` takes a function that takes two parameters and zips two lists with it. `zipWith3` takes a function that takes three parameters and zips three lists with it, and so on. By using zip lists with an applicative style, we don't have to have a separate zip function for each number of lists that we want to zip together. We just use the applicative style to zip together an arbitrary amount of lists with a function, and that's pretty cool.
 
@@ -7853,9 +7853,9 @@ The last function in this type class definition is `mconcat`. It takes a list o
 
 Before moving on to specific instances of `Monoid`, let's take a brief look at the monoid laws. We mentioned that there has to be a value that acts as the identity with respect to the binary function and that the binary function has to be associative. It's possible to make instances of `Monoid` that don't follow these rules, but such instances are of no use to anyone because when using the `Monoid` type class, we rely on its instances acting like monoids. Otherwise, what's the point? That's why when making instances, we have to make sure they follow these laws:
 
-- mempty `mappend` x = x
-- x `mappend` mempty = x
-- (x `mappend` y) `mappend` z = x `mappend` (y `mappend` z)
+- ==mempty \`mappend\` x = x==
+- ==x \`mappend\` mempty = x==
+- ==(x \`mappend\` y) \`mappend\` z = x \`mappend\` (y \`mappend\` z)==
 
 The first two state that `mempty` has to act as the identity with respect to `mappend` and the third says that `mappend` has to be associative i.e. that it the order in which we use `mappend` to reduce several monoid values into one doesn't matter. Haskell doesn't enforce these laws, so we as the programmer have to be careful that our instances do indeed obey them.
 
@@ -8370,7 +8370,7 @@ Now that we have a vague idea of what monads are about, let's see if we can make
 
 Much to no one's surprise, `Maybe` is a monad, so let's explore it a bit more and see if we can combine it with what we know about monads.
 
-Make sure you understand [applicatives](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#applicative-functors) at this point. It's good if you have a feel for how the various Applicative instances work and what kind of computations they represent, because monads are nothing more than taking our existing applicative knowledge and upgrading it.
+> Make sure you understand [applicatives](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#applicative-functors) at this point. It's good if you have a feel for how the various `Applicative` instances work and what kind of computations they represent, because monads are nothing more than taking our existing applicative knowledge and upgrading it.
 
 A value of type `Maybe a` represents a value of type `a` with the context of possible failure attached. A value of `Just "dharma"` means that the string `"dharma"` is there whereas a value of `Nothing` represents its absence, or if you look at the string as the result of a computation, it means that the computation has failed.
 
@@ -8479,7 +8479,7 @@ Let's start with the first line. It says `class Monad m where`. But wait, didn'
 
 The first function that the `Monad` type class defines is `return`. It's the same as `pure`, only with a different name. Its type is `(Monad m) => a -> m a`. It takes a value and puts it in a minimal default context that still holds that value. In other words, it takes something and wraps it in a monad. It always does the same thing as the `pure` function from the `Applicative` type class, which means we're already acquainted with `return`. We already used `return` when doing I/O. We used it to take a value and make a bogus I/O action that does nothing but yield that value. For `Maybe` it takes a value and wraps it in a `Just`.
 
-Just a reminder: return is nothing like the return that's in most other languages. It doesn't end function execution or anything, it just takes a normal value and puts it in a context.
+> Just a reminder: `return` is nothing like the `return` that's in most other languages. It doesn't end function execution or anything, it just takes a normal value and puts it in a context.
 
 ![[LYHfGG_97_tur2.png]]
 
@@ -8989,7 +8989,7 @@ The list `[1,2]` gets bound to `n` and `['a','b']` gets bound to `ch`. Th
 
 Generally speaking, because `return` takes a value and wraps it in a minimal context, it doesn't have any extra effect (like failing in `Maybe` or resulting in more non-determinism for lists) but it does present something as its result.
 
-When you have non-deterministic values interacting, you can view their computation as a tree where every possible result in a list represents a separate branch.
+> When you have non-deterministic values interacting, you can view their computation as a tree where every possible result in a list represents a separate branch.
 
 Here's the previous expression rewritten in `do` notation:
 
@@ -9196,7 +9196,7 @@ Haskell allows any type to be an instance of any type class as long as the types
 
 The first monad law states that if we take a value, put it in a default context with `return` and then feed it to a function by using `>>=`, it's the same as just taking the value and applying the function to it. To put it formally:
 
-- return x >>= f is the same damn thing as f x
+- `return x >>= f` is the same damn thing as `f x`
 
 If you look at monadic values as values with a context and `return` as taking a value and putting it in a default minimal context that still presents that value as its result, it makes sense, because if that context is really minimal, feeding this monadic value to a function shouldn't be much different than just applying the function to the normal value, and indeed it isn't different at all.
 
@@ -9224,7 +9224,7 @@ We said that for `IO`, using `return` makes an I/O action that has no side-ef
 
 The second law states that if we have a monadic value and we use `>>=` to feed it to `return`, the result is our original monadic value. Formally:
 
-- m >>= return is no different than just m
+- `m >>= return` is no different than just `m`
 
 This one might be a bit less obvious than the first one, but let's take a look at why it should hold. When we feed monadic values to functions by using `>>=`, those functions take normal values and return monadic ones. `return` is also one such function, if you consider its type. Like we said, `return` puts a value in a minimal context that still presents that value as its result. This means that, for instance, for `Maybe`, it doesn't introduce any failure and for lists, it doesn't introduce any extra non-determinism. Here's a test run for a few monads:
 
@@ -9251,7 +9251,7 @@ Left identity and right identity are basically laws that describe how `return`�
 
 The final monad law says that when we have a chain of monadic function applications with `>>=`, it shouldn't matter how they're nested. Formally written:
 
-- Doing (m >>= f) >>= g is just like doing m >>= (\x -> f x >>= g)
+- Doing `(m >>= f) >>= g` is just like doing `m >>= (\x -> f x >>= g)`
 
 Hmmm, now what's going on here? We have one monadic value, `m` and two monadic functions `f` and `g`. When we're doing `(m >>= f) >>= g`, we're feeding `m` to `f`, which results in a monadic value. Then, we feed that monadic value to `g`. In the expression `m >>= (\x -> f x >>= g)`, we take a monadic value and we feed it to a function that feeds the result of `f x` to `g`. It's not easy to see how those two are equal, so let's take a look at an example that makes this equality a bit clearer.
 
@@ -9390,7 +9390,7 @@ See how inside the lambda, `x` is just a normal string and not a tuple and how
 
 ### Monoids to the rescue
 
-Be sure you know what [monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#monoids) are at this point! Cheers.
+> Be sure you know what [monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#monoids) are at this point! Cheers.
 
 Right now, `applyLog` takes values of type `(a,String)`, but is there a reason that the log has to be a `String`? It uses `++` to append the logs, so wouldn't this work on any kind of list, not just a list of characters? Sure it would. We can go ahead and change its type to this:
 
@@ -9880,7 +9880,7 @@ s -> (a,s)
 
 `s` is the type of the state and `a` the result of the stateful computations.
 
-Assignment in most other languages could be thought of as a stateful computation. For instance, when we do x = 5 in an imperative language, it will usually assign the value 5 to the variable x and it will also have the value 5 as an expression. If you look at that functionally, you could look at it as a function that takes a state (that is, all the variables that have been assigned previously) and returns a result (in this case 5) and a new state, which would be all the previous variable mappings plus the newly assigned variable.
+> Assignment in most other languages could be thought of as a stateful computation. For instance, when we do `x = 5` in an imperative language, it will usually assign the value `5` to the variable `x` and it will also have the value `5` as an expression. If you look at that functionally, you could look at it as a function that takes a state (that is, all the variables that have been assigned previously) and returns a result (in this case `5`) and a new state, which would be all the previous variable mappings plus the newly assigned variable.
 
 This stateful computation, a function that takes a state and returns a result and a new state, can be thought of as a value with a context as well. The actual value is the result, whereas the context is that we have to provide some initial state to actually get that result and that apart from getting a result we also get a new state.
 
