@@ -26,5 +26,6 @@
   ],
   "userIgnoreFilters": [
     "Шаблоны/"
-  ]
+  ],
+  "strictLineBreaks": true
 }
