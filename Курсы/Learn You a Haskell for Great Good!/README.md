@@ -14,5 +14,5 @@ link to the original book:
 
 ---
 
-- English [[Table Of Content]]
-- Russian [[Оглавление]]
+- English [[Learn You a Haskell for Great Good! en]]
+- Russian [[Learn You a Haskell for Great Good! ru]]
