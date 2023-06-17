@@ -12,7 +12,7 @@
   "contentWidth": "",
   "sidebarWidth": "",
   "startOutlineCollapsed": false,
-  "dataviewBlockWaitTime": 1000,
+  "dataviewBlockWaitTime": 12000,
   "showWarningsInExportLog": true,
   "addDarkModeToggle": true,
   "includeOutline": true,
@@ -26,6 +26,6 @@
   "graphCentralForce": 3,
   "graphEdgePruning": 100,
   "graphMinNodeSize": 3,
-  "graphMaxNodeSize": 7,
-  "lastExportPath": "C:\\Users\\jenya\\Downloads\\sdfsdfsdf"
+  "graphMaxNodeSize": 6,
+  "lastExportPath": "C:\\Users\\jenya\\Downloads\\test"
 }
