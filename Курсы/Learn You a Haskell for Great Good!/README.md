@@ -1,16 +1,16 @@
-I decided to translate this book into Russian.
-I have saved the original book in case the original disappears or becomes unavailable.
+Я решил перевести эту книгу на русский язык.
 
-link to the original book:
-[Learn You a Haskell for Great Good!](http://learnyouahaskell.com/)
+Я сохранил оригинал книги на случай, если оригинал исчезнет или станет недоступен.
+
+ссылка на оригинальную книгу: [Выучи Хаскель для Великого Блага! :3](http://learnyouahaskell.com)
 
 ---
 
-Я решил перевести эту книгу на русский язык.
-Я сохранил оригинал книги на случай, если оригинал исчезнет или станет недоступен.
+П.С. оказывается перевод книги вышел ещё 11 лет назад...
 
-ссылка на оригинальную книгу:
-[Выучи Хаскеле для Великого Блага! :3](http://learnyouahaskell.com)
+И я рекомендую не читать то, что я намалевал...
+
+Читайте хороший перевод...
 
 ---
 
