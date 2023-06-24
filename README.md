@@ -6,108 +6,35 @@
 Основная цель - сделать бота из [Задания 3](https://coda.io/@metalamp/education/3-14)
 
 [[Полезные ресурсы]]
+
 [[Отчеты]]
 
 ---
 # Задание 1.1 Первичная теория
 
-- [x] [Установка The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/)
-- [x] [О Haskell по-человечески](https://www.ohaskell.guide/) Итого 8 часов (С учётом, что я книгу изучил пол года назад, а сейчас её перечитал)
-- [ ] [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters) Итого 1110 мин = 18,5 часов
-	- [ ] [Introduction](http://learnyouahaskell.com/introduction) 45 мин
-		- [ ] [About this tutorial](http://learnyouahaskell.com/introduction#about-this-tutorial) 15 мин
-		- [ ] [So what's Haskell?](http://learnyouahaskell.com/introduction#so-whats-haskell) 15 мин
-		- [ ] [What you need to dive in](http://learnyouahaskell.com/introduction#what-you-need) 15 мин
-	- [ ] [Starting Out](http://learnyouahaskell.com/starting-out) 90 мин
-		- [ ] [Ready, set, go!](http://learnyouahaskell.com/starting-out#ready-set-go) 15 мин
-		- [ ] [Baby's first functions](http://learnyouahaskell.com/starting-out#babys-first-functions) 15 мин
-		- [ ] [An intro to lists](http://learnyouahaskell.com/starting-out#an-intro-to-lists) 15 мин
-		- [ ] [Texas ranges](http://learnyouahaskell.com/starting-out#texas-ranges) 15 мин
-		- [ ] [I'm a list comprehension](http://learnyouahaskell.com/starting-out#im-a-list-comprehension) 15 мин
-		- [ ] [Tuples](http://learnyouahaskell.com/starting-out#tuples) 15 мин
-	- [ ] [Types and Typeclasses](http://learnyouahaskell.com/types-and-typeclasses) 45 мин
-		- [ ] [Believe the type](http://learnyouahaskell.com/types-and-typeclasses#believe-the-type) 15 мин
-		- [ ] [Type variables](http://learnyouahaskell.com/types-and-typeclasses#type-variables) 15 мин
-		- [ ] [Typeclasses 101](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101) 15 мин
-	- [ ] [Syntax in Functions](http://learnyouahaskell.com/syntax-in-functions) 75 мин
-		- [ ] [Pattern matching](http://learnyouahaskell.com/syntax-in-functions#pattern-matching) 15 мин
-		- [ ] [Guards, guards!](http://learnyouahaskell.com/syntax-in-functions#guards-guards) 15 мин
-		- [ ] [Where!?](http://learnyouahaskell.com/syntax-in-functions#where) 15 мин
-		- [ ] [Let it be](http://learnyouahaskell.com/syntax-in-functions#let-it-be) 15 мин
-		- [ ] [Case expressions](http://learnyouahaskell.com/syntax-in-functions#case-expressions) 15 мин
-	- [ ] [Recursion](http://learnyouahaskell.com/recursion) 75 мин
-		- [ ] [Hello recursion!](http://learnyouahaskell.com/recursion#hello-recursion) 15 мин
-		- [ ] [Maximum awesome](http://learnyouahaskell.com/recursion#maximum-awesome)15 мин
-		- [ ] [A few more recursive functions](http://learnyouahaskell.com/recursion#a-few-more-recursive-functions) 15 мин
-		- [ ] [Quick, sort!](http://learnyouahaskell.com/recursion#quick-sort) 15 мин
-		- [ ] [Thinking recursively](http://learnyouahaskell.com/recursion#thinking-recursively) 15 мин
-	- [ ] [Higher Order Functions](http://learnyouahaskell.com/higher-order-functions) 105 мин
-		- [ ] [Curried functions](http://learnyouahaskell.com/higher-order-functions#curried-functions) 15 мин
-		- [ ] [Some higher-orderism is in order](http://learnyouahaskell.com/higher-order-functions#higher-orderism) 15 мин
-		- [ ] [Maps and filters](http://learnyouahaskell.com/higher-order-functions#maps-and-filters) 15 мин
-		- [ ] [Lambdas](http://learnyouahaskell.com/higher-order-functions#lambdas) 15 мин
-		- [ ] [Only folds and horses](http://learnyouahaskell.com/higher-order-functions#folds) 15 мин
-		- [ ] [Function application with $](http://learnyouahaskell.com/higher-order-functions#function-application) 15 мин
-		- [ ] [Function composition](http://learnyouahaskell.com/higher-order-functions#composition) 15 мин
-	- [ ] [Modules](http://learnyouahaskell.com/modules) 90 мин
-		- [ ] [Loading modules](http://learnyouahaskell.com/modules#loading-modules) 15 мин
-		- [ ] [Data.List](http://learnyouahaskell.com/modules#data-list) 15 мин
-		- [ ] [Data.Char](http://learnyouahaskell.com/modules#data-char) 15 мин
-		- [ ] [Data.Map](http://learnyouahaskell.com/modules#data-map) 15 мин
-		- [ ] [Data.Set](http://learnyouahaskell.com/modules#data-set) 15 мин
-		- [ ] [Making our own modules](http://learnyouahaskell.com/modules#making-our-own-modules) 15 мин
-	- [ ] [Making Our Own Types and Typeclasses](http://learnyouahaskell.com/making-our-own-types-and-typeclasses) 150 мин
-		- [ ] [Algebraic data types intro](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#algebraic-data-types) 15 мин
-		- [ ] [Record syntax](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#record-syntax) 15 мин
-		- [ ] [Type parameters](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#type-parameters) 15 мин
-		- [ ] [Derived instances](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#derived-instances) 15 мин
-		- [ ] [Type synonyms](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#type-synonyms) 15 мин
-		- [ ] [Recursive data structures](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#recursive-data-structures) 15 мин
-		- [ ] [Typeclasses 102](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#typeclasses-102) 15 мин
-		- [ ] [A yes-no typeclass](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#a-yes-no-typeclass) 15 мин
-		- [ ] [The Functor typeclass](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#the-functor-typeclass) 15 мин
-		- [ ] [Kinds and some type-foo](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#kinds-and-some-type-foo) 15 мин
-	- [ ] [Input and Output](http://learnyouahaskell.com/input-and-output) 90 мин
-		- [ ] [Hello, world!](http://learnyouahaskell.com/input-and-output#hello-world) 15 мин
-		- [ ] [Files and streams](http://learnyouahaskell.com/input-and-output#files-and-streams) 15 мин
-		- [ ] [Command line arguments](http://learnyouahaskell.com/input-and-output#command-line-arguments) 15 мин
-		- [ ] [Randomness](http://learnyouahaskell.com/input-and-output#randomness) 15 мин
-		- [ ] [Bytestrings](http://learnyouahaskell.com/input-and-output#bytestrings) 15 мин
-		- [ ] [Exceptions](http://learnyouahaskell.com/input-and-output#exceptions) 15 мин
-	- [ ] [Functionally Solving Problems](http://learnyouahaskell.com/functionally-solving-problems) 30 мин
-		- [ ] [Reverse Polish notation calculator](http://learnyouahaskell.com/functionally-solving-problems#reverse-polish-notation-calculator) 15 мин
-		- [ ] [Heathrow to London](http://learnyouahaskell.com/functionally-solving-problems#heathrow-to-london) 15 мин
-	- [ ] [Functors, Applicative Functors and Monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids) 60 мин
-		- [ ] [Functors redux](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#functors-redux) 15 мин
-		- [ ] [Applicative functors](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#applicative-functors) 15 мин
-		- [ ] [The newtype keyword](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#the-newtype-keyword) 15 мин
-		- [ ] [Monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#monoids) 15 мин
-	- [ ] [A Fistful of Monads](http://learnyouahaskell.com/a-fistful-of-monads) 90 мин
-		- [ ] [Getting our feet wet with Maybe](http://learnyouahaskell.com/a-fistful-of-monads#getting-our-feet-wet-with-maybe) 15 мин
-		- [ ] [The Monad type class](http://learnyouahaskell.com/a-fistful-of-monads#the-monad-type-class) 15 мин
-		- [ ] [Walk the line](http://learnyouahaskell.com/a-fistful-of-monads#walk-the-line) 15 мин
-		- [ ] [do notation](http://learnyouahaskell.com/a-fistful-of-monads#do-notation) 15 мин
-		- [ ] [The list monad](http://learnyouahaskell.com/a-fistful-of-monads#the-list-monad) 15 мин
-		- [ ] [Monad laws](http://learnyouahaskell.com/a-fistful-of-monads#monad-laws) 15 мин
-	- [ ] [For a Few Monads More](http://learnyouahaskell.com/for-a-few-monads-more) 90 мин
-		- [ ] [Writer? I hardly know her!](http://learnyouahaskell.com/for-a-few-monads-more#writer) 15 мин
-		- [ ] [Reader? Ugh, not this joke again.](http://learnyouahaskell.com/for-a-few-monads-more#reader) 15 мин
-		- [ ] [Tasteful stateful computations](http://learnyouahaskell.com/for-a-few-monads-more#state) 15 мин
-		- [ ] [Error error on the wall](http://learnyouahaskell.com/for-a-few-monads-more#error) 15 мин
-		- [ ] [Some useful monadic functions](http://learnyouahaskell.com/for-a-few-monads-more#useful-monadic-functions) 15 мин
-		- [ ] [Making monads](http://learnyouahaskell.com/for-a-few-monads-more#making-monads) 15 мин
-	- [ ] [Zippers](http://learnyouahaskell.com/zippers) 75 мин
-		- [ ] [Taking a walk](http://learnyouahaskell.com/zippers#taking-a-walk) 15 мин
-		- [ ] [A trail of breadcrumbs](http://learnyouahaskell.com/zippers#a-trail-of-breadcrumbs) 15 мин
-		- [ ] [Focusing on lists](http://learnyouahaskell.com/zippers#focusing-on-lists) 15 мин
-		- [ ] [A very simple file system](http://learnyouahaskell.com/zippers#a-very-simple-file-system) 15 мин
-		- [ ] [Watch your step](http://learnyouahaskell.com/zippers#watch-your-step) 15 мин
+- [x] [Установка The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/
+- [x] [О Haskell по-человечески](https://www.ohaskell.guide/)
+- [ ] [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
+	- [x] [Introduction](http://learnyouahaskell.com/introduction
+	- [x] [Starting Out](http://learnyouahaskell.com/starting-out)
+	- [x] [Types and Typeclasses](http://learnyouahaskell.com/types-and-typeclasses)
+	- [x] [Syntax in Functions](http://learnyouahaskell.com/syntax-in-functions)
+	- [x] [Recursion](http://learnyouahaskell.com/recursion)
+	- [x] [Higher Order Functions](http://learnyouahaskell.com/higher-order-functions)
+	- [x] [Modules](http://learnyouahaskell.com/modules)
+	- [x] [Making Our Own Types and Typeclasses](http://learnyouahaskell.com/making-our-own-types-and-typeclasses)
+	- [ ] [Input and Output](http://learnyouahaskell.com/input-and-output)
+	- [ ] [Functionally Solving Problems](http://learnyouahaskell.com/functionally-solving-problems)
+	- [ ] [Functors, Applicative Functors and Monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
+	- [ ] [A Fistful of Monads](http://learnyouahaskell.com/a-fistful-of-monads)
+	- [ ] [For a Few Monads More](http://learnyouahaskell.com/for-a-few-monads-more)
+	- [ ] [Zippers](http://learnyouahaskell.com/zippers)
 
 
 ---
 # Задание 1.2 Первичная практика
 
-- [ ] [Codewars](https://www.codewars.com/kata/search/haskell) Выполнение обязательных ката на codewars **неизвестно** мин
+- [ ] [Codewars](https://www.codewars.com/kata/search/haskell) Выполнение обязательных ката на codewars
 	- [ ] [Is this a triangle](https://www.codewars.com/kata/is-this-a-triangle) **неизвестно** мин^[Определение, могут ли данных три числа быть длинами сторон треугольника.
 		  С этой катой тренируются базовые логические конструкции. Полезно, что есть простор и для элегантных решений, и для решений "в лоб".
 		  Есть вероятность, что практикующий потренирует так же совсем базовую работу со списками (хотя тут это необязательно).]
