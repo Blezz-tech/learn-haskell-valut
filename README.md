@@ -9,11 +9,24 @@
 
 [[Отчеты]]
 
+# Итого:
+
+- [x] ghcup
+	- [x] ghc
+	- [x] cabal
+	- [x] haskell language sever
+	- [x] stack
+- [x] О Haskell по-человечески (то, что было)
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+
+
 ---
 # Задание 1.1 Первичная теория
 
-- [x] [Установка The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/
-- [x] [О Haskell по-человечески](https://www.ohaskell.guide/)
 - [ ] [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
 	- [x] [Introduction](http://learnyouahaskell.com/introduction
 	- [x] [Starting Out](http://learnyouahaskell.com/starting-out)
@@ -23,7 +36,7 @@
 	- [x] [Higher Order Functions](http://learnyouahaskell.com/higher-order-functions)
 	- [x] [Modules](http://learnyouahaskell.com/modules)
 	- [x] [Making Our Own Types and Typeclasses](http://learnyouahaskell.com/making-our-own-types-and-typeclasses)
-	- [ ] [Input and Output](http://learnyouahaskell.com/input-and-output)
+	- [x] [Input and Output](http://learnyouahaskell.com/input-and-output)
 	- [ ] [Functionally Solving Problems](http://learnyouahaskell.com/functionally-solving-problems)
 	- [ ] [Functors, Applicative Functors and Monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
 	- [ ] [A Fistful of Monads](http://learnyouahaskell.com/a-fistful-of-monads)
@@ -88,9 +101,9 @@
 	- [ ] [Шпаргалка по Решениям (Если прям долго не получается и чтобы не тянуть время)](https://github.com/rgordeev/functional_programming_in_haskell)
 - [ ] [Функциональное программирование на языке Haskell](https://stepik.org/course/75/).^[первая часть курса, очень системный и развернутый материал по Haskell. Она обязательна к изучению.]
 	- [ ] Введение
-		- [ ] [1.1 Установка и настройка среды](https://stepik.org/lesson/8119/step/1?unit=1375) ≈17 мин
-		- [ ] [1.2 Функции](https://stepik.org/lesson/7859/step/1?unit=1351) ≈ 31 мин
-		- [ ] [1.3 Операторы](https://stepik.org/lesson/8411/step/1?unit=1550) ≈ 26 мин
+		- [x] [1.1 Установка и настройка среды](https://stepik.org/lesson/8119/step/1?unit=1375) ≈17 мин
+		- [x] [1.2 Функции](https://stepik.org/lesson/7859/step/1?unit=1351) ≈ 31 мин
+		- [x] [1.3 Операторы](https://stepik.org/lesson/8411/step/1?unit=1550) ≈ 26 мин
 		- [ ] [1.4 Базовые типы](https://stepik.org/lesson/8412/step/1?unit=1551) ≈ 48 мин
 		- [ ] [1.5 Рекурсия](https://stepik.org/lesson/8413/step/1?unit=1552) ≈ 1ч 15 мин
 		- [ ] [1.6 Локальные связывания и правила отступов](https://stepik.org/lesson/8414/step/1?unit=1553) ≈ 1 ч 35 мин
@@ -157,10 +170,10 @@
 - [ ] По желанию: часто рекомендуемая многими новичками книга [http://haskellbook.com/](http://haskellbook.com/).
 - [ ] По желанию: [видео-курс от Николая Кудасова](https://www.youtube.com/watch?v=jNQVa5INdDk&list=PLov3NSwpY86cfkfXyVroSZkHemxoAdnrd&index=1).
 - [ ] По желанию: Write Yourself a Scheme in 48 Hours.-     
-	Упражнение по написанию простого интерпретатора для языка Scheme (язык, с которого был слизан JavaScript). [https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours).
-	.
-	Есть так же перевод на русский (там могут быть не все части или неактуальные данные): [https://ru.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours](https://ru.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours).
-	.
+	Упражнение по написанию простого интерпретатора для языка Scheme (язык, с которого был слизан JavaScript). [https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
+	
+	Есть так же перевод на русский (там могут быть не все части или неактуальные данные): [https://ru.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours](https://ru.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
+	
 	Очень рекомендую пройти, на самом деле туториал довольно небольшой, но дает хороший пример написания средних по размеру програм, в то время как почти все остальные туториалы нацелены на примеры совсем тривиальных вещей в один-два файла.
 - [ ] [Выводы и ссылки на рецензии о современных книгах по Haskell](https://medium.com/@_bravit/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8-%D0%BF%D0%BE-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E-%D0%BD%D0%B0-haskell-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D1%8B-712c1f5b7749).
 - [ ] Статьи по различным темам, которые могут оказаться полезными для понимания того или иного материала
@@ -255,9 +268,15 @@
 
 # Задание 4 Сайт (Пока не перенесено)
 
-# Задание 5 (От себя, будет дополняться по времени)
+# Задание 5 Ревью
 
-- [ ] [Прочесть и написать отчеты Error vs. Exception - HaskellWiki](https://wiki.haskell.org/Error_vs._Exception)
+не будет пока не сделаю задания 3 и 4
+
+# Задание 6 От себя
+
+Что нужно будет сделать когда будет время
+
+- [ ] [Прочесть и написать отчет Error vs. Exception - HaskellWiki](https://wiki.haskell.org/Error_vs._Exception)
 - [ ] [Блог Нила Митчелла (Haskell и т. д.): В погоне за утечкой пространства при встряхивании](http://neilmitchell.blogspot.com/2013/02/chasing-space-leak-in-shake.html)
 - [ ] 
 - [ ] 
