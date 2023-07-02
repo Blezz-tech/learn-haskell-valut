@@ -97,43 +97,37 @@
 - [ ] видео-курс на степик от Дениса Москвина. (Ниже разбит на части)
 	- [ ] [Шпаргалка по Решениям (Если прям долго не получается и чтобы не тянуть время)](https://github.com/rgordeev/functional_programming_in_haskell)
 - [ ] [Функциональное программирование на языке Haskell](https://stepik.org/course/75/).^[первая часть курса, очень системный и развернутый материал по Haskell. Она обязательна к изучению.]
-	- [ ] Введение
-		- [x] [1.1 Установка и настройка среды](https://stepik.org/lesson/8119/step/1?unit=1375) ≈17 мин
-		- [x] [1.2 Функции](https://stepik.org/lesson/7859/step/1?unit=1351) ≈ 31 мин
-		- [x] [1.3 Операторы](https://stepik.org/lesson/8411/step/1?unit=1550) ≈ 26 мин
-		- [ ] [1.4 Базовые типы](https://stepik.org/lesson/8412/step/1?unit=1551) ≈ 48 мин
-		- [ ] [1.5 Рекурсия](https://stepik.org/lesson/8413/step/1?unit=1552) ≈ 1ч 15 мин
-		- [ ] [1.6 Локальные связывания и правила отступов](https://stepik.org/lesson/8414/step/1?unit=1553) ≈ 1 ч 35 мин
+	- [x] Введение
 	- [ ] Основы программирования
-		- [ ] [2.1 Параметрический полиморфизм](https://stepik.org/lesson/8417/step/1?unit=1555) ≈ 51 мин
-		- [ ] [2.2 Параметрический полиморфизм (2)](https://stepik.org/lesson/12398/step/1?unit=2828) ≈ 52 мин
+		- [x] [2.1 Параметрический полиморфизм](https://stepik.org/lesson/8417/step/1?unit=1555)
+		- [ ] [2.2 Параметрический полиморфизм (2)](https://stepik.org/lesson/12398/step/1?unit=2828)
 		- [ ] [2.3 Классы типов](https://stepik.org/lesson/8420/step/1?unit=1556) ≈ 45 мин
-		- [ ] [2.4 Стандартные классы типов](https://stepik.org/lesson/12399/step/1?unit=2829) ≈ 1 ч 15 мин
-		- [ ] [2.5 Нестрогая семантика](https://stepik.org/lesson/8421/step/1?unit=1557) ≈ 1 ч 5 мин
-		- [ ] [2.6 Модули и компиляция](https://stepik.org/lesson/8422/step/1?unit=1558) ≈ 23 мин
+		- [ ] [2.4 Стандартные классы типов](https://stepik.org/lesson/12399/step/1?unit=2829)
+		- [ ] [2.5 Нестрогая семантика](https://stepik.org/lesson/8421/step/1?unit=1557)
+		- [ ] [2.6 Модули и компиляция](https://stepik.org/lesson/8422/step/1?unit=1558)
 	- [ ] Списки
-		- [ ] [3.1 Функции для работы со списками](https://stepik.org/lesson/8326/step/1?unit=1474) ≈ 1 ч 45 мин
-		- [ ] [3.2 Функции высших порядков над списками](https://stepik.org/lesson/12321/step/1?unit=2785) ≈ 1 ч 34 мин
-		- [ ] [3.3 Генераторы списков](https://stepik.org/lesson/8328/step/1?unit=1476) ≈ 1 ч 41 мин
-		- [ ] [3.4 Правая свертка](https://stepik.org/lesson/4745/step/1?unit=1081) ≈ 29 мин
-		- [ ] [3.5 Левая свертка и ее сравнение с правой](https://stepik.org/lesson/5790/step/1?unit=1136) ≈ 46 мин
-		- [ ] [3.6 Родственные сверткам функции](https://stepik.org/lesson/6196/step/1?unit=1229) ≈ 56 мин
+		- [ ] [3.1 Функции для работы со списками](https://stepik.org/lesson/8326/step/1?unit=1474)
+		- [ ] [3.2 Функции высших порядков над списками](https://stepik.org/lesson/12321/step/1?unit=2785)
+		- [ ] [3.3 Генераторы списков](https://stepik.org/lesson/8328/step/1?unit=1476)
+		- [ ] [3.4 Правая свертка](https://stepik.org/lesson/4745/step/1?unit=1081)
+		- [ ] [3.5 Левая свертка и ее сравнение с правой](https://stepik.org/lesson/5790/step/1?unit=1136)
+		- [ ] [3.6 Родственные сверткам функции](https://stepik.org/lesson/6196/step/1?unit=1229)
 	- [ ] Типы данных
-		- [ ] [4.1 Типы перечислений](https://stepik.org/lesson/4916/step/1?unit=1082) ≈ 48 мин
-		- [ ] [4.2 Типы произведений и сумм произведений](https://stepik.org/lesson/4985/step/1?unit=1083) ≈ 1 ч 10  мин
-		- [ ] [4.3 Синтаксис записей](https://stepik.org/lesson/5431/step/1?unit=1132) ≈ 41 мин
-		- [ ] [4.4 Типы с параметрами](https://stepik.org/lesson/5746/step/1?unit=1256) ≈ 1 ч 24 мин
-		- [ ] [4.5 Рекурсивные типы данных](https://stepik.org/lesson/7009/step/1?unit=1472) ≈ 53 мин
-		- [ ] [4.6 Синонимы и обертки для типов](https://stepik.org/lesson/7602/step/1?unit=1473) ≈ 1 ч 57 мин
+		- [ ] [4.1 Типы перечислений](https://stepik.org/lesson/4916/step/1?unit=1082)
+		- [ ] [4.2 Типы произведений и сумм произведений](https://stepik.org/lesson/4985/step/1?unit=1083)
+		- [ ] [4.3 Синтаксис записей](https://stepik.org/lesson/5431/step/1?unit=1132)
+		- [ ] [4.4 Типы с параметрами](https://stepik.org/lesson/5746/step/1?unit=1256)
+		- [ ] [4.5 Рекурсивные типы данных](https://stepik.org/lesson/7009/step/1?unit=1472)
+		- [ ] [4.6 Синонимы и обертки для типов](https://stepik.org/lesson/7602/step/1?unit=1473)
 	- [ ] Монады
-		- [ ] [5.1 Класс типов Functor и законы для него](https://stepik.org/lesson/8432/step/1?unit=2743) ≈ 1 ч 9 мин
-		- [ ] [5.2 Определение монады](https://stepik.org/lesson/8437/step/1?unit=1572) ≈ 1 ч 2 мин
-		- [ ] [5.3 Монада Identity](https://stepik.org/lesson/8438/step/1?unit=1573) ≈ 1 ч 6 мин
-		- [ ] [5.4 Список и Maybe как монады](https://stepik.org/lesson/8439/step/1?unit=1574) ≈ 1 ч 27 мин
-		- [ ] [5.5 Монада IO](https://stepik.org/lesson/8443/step/1?unit=1578) ≈ 1 ч 33 мин
-		- [ ] [5.6 Монада Reader](https://stepik.org/lesson/8441/step/1?unit=1576) ≈ 54 мин
-		- [ ] [5.7 Монада Writer](https://stepik.org/lesson/8442/step/1?unit=1577) ≈ 40 мин
-		- [ ] [5.8 Монада State](https://stepik.org/lesson/8444/step/1?unit=1579) ≈ 1 ч 8 мин
+		- [ ] [5.1 Класс типов Functor и законы для него](https://stepik.org/lesson/8432/step/1?unit=2743)
+		- [ ] [5.2 Определение монады](https://stepik.org/lesson/8437/step/1?unit=1572)
+		- [ ] [5.3 Монада Identity](https://stepik.org/lesson/8438/step/1?unit=1573)
+		- [ ] [5.4 Список и Maybe как монады](https://stepik.org/lesson/8439/step/1?unit=1574)
+		- [ ] [5.5 Монада IO](https://stepik.org/lesson/8443/step/1?unit=1578)
+		- [ ] [5.6 Монада Reader](https://stepik.org/lesson/8441/step/1?unit=1576)
+		- [ ] [5.7 Монада Writer](https://stepik.org/lesson/8442/step/1?unit=1577)
+		- [ ] [5.8 Монада State](https://stepik.org/lesson/8444/step/1?unit=1579)
 - [ ] [Функциональное программирование на языке Haskell (часть 2)](https://stepik.org/course/693/).^[2-я часть курса, она уже необязательна. Материал тут достаточно сложный, его рекомендуем изучать после того, как сделаны первые версии бота и сервера, чтобы закрепить полученные на практике знания и расширить/углубить их.]
 	- [ ] Аппликативные функторы
 		- [ ] [1.1 Определение аппликативного функтора](https://stepik.org/lesson/28880/step/1?unit=9912) ≈ 2 ч 3 мин
