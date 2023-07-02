@@ -393,46 +393,109 @@ helper 55 89 0  = 55
 
 ### Задание 1
 
+Не используя GHCi, определите строку, которая является значением выражения `(let x = 'w' in [x,'o',x]) ++ "!"`.
 
-Ответ:
-
+Ответ: `wow!`
 
 ### Задание 2
 
+Реализуйте функцию `seqA`, находящую элементы следующей рекуррентной последовательности
+
+$$
+a_0=1;a_1=2;a_2=3;a_{k+3}=a_{k+2}+a_{k+1}-2a_k
+$$
+
+Попытайтесь найти эффективное решение.
+
+```haskell
+GHCi> seqA 301
+1276538859311178639666612897162414
+```
 
 Ответ:
 
+```haskell
+seqA :: Integer -> Integer
+seqA k 
+  | k >= 0 = helper 1 2 3 k
+  | otherwise = error "error seqA. n > 3"
+   where
+    helper a0 a1 a2 k 
+      | k == 0    = a0
+      | otherwise = helper (a1) (a2) (a2 + a1 - 2 * a0) (k - 1)
+```
 
 ### Задание 3
 
+Реализуйте функцию, находящую сумму и количество цифр десятичной записи заданного целого числа.
+
+```haskell
+sum'n'count :: Integer -> (Integer, Integer)
+sum'n'count x = undefined
+```
+
+```haskell
+GHCi> sum'n'count (-39)
+(12,2)
+```
 
 Ответ:
 
+```haskell
+sum'n'count :: Integer -> (Integer, Integer)
+sum'n'count x | x == 0    = (0, 1)
+              | otherwise = helper (abs x) (0, 0)
+  where
+    helper x acc | x == 0    = acc 
+                 | otherwise = helper (div x 10) (fst acc + (mod x 10), snd acc + 1)
+```
 
 ### Задание 4
 
+Реализуйте функцию, находящую значение определённого интеграла от заданной функции �f на заданном интервале [�,�][a,b] методом трапеций. (Используйте равномерную сетку; достаточно 1000 элементарных отрезков.)
+
+```haskell
+integration :: (Double -> Double) -> Double -> Double -> Double
+integration f a b = undefined
+```
+
+```haskell
+GHCi> integration sin pi 0
+-2.0
+```
+
+Результат может отличаться от -2.0, но не более чем на 1e-4.
 
 Ответ:
 
+Моё:
 
-### Задание 5
+```haskell
+integration :: (Double -> Double) -> Double -> Double -> Double
+integration f a b = let
+    n = 1000000
+    h =  if a < b then (b - a) / n else (a - b) / n
+    helper f a b acc
+      | a >= b     = h * acc
+      | otherwise  = helper f (a + h) b (acc + (f a))
+    in if h == 0 then
+         f a
+       else if a < b then
+         helper f (a + h) (b - h) ((f a + f b) / 2)
+       else
+          -helper f (b + h) (a - h) ((f a + f b) / 2)
+```
 
+Лучшее:
 
-Ответ:
-
-
-### Задание 6
-
-
-Ответ:
-
-
-### Задание 7
-
-
-Ответ:
-
-
+```haskell
+integration :: (Double -> Double) -> Double -> Double -> Double
+integration f a b = h * ( (f a + f b)/2 + (sum $ map f xs) )
+  where
+    n = 1000
+    h = (b-a)/n
+    xs = [a+h*x | x <- [1..n-1]]
+```
 
 # 2. Основы программирования
 
