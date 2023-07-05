@@ -1201,44 +1201,96 @@ import Bar
 
 ### Задание 1
 
+Реализуйте функцию `addTwoElements`, которая бы добавляла два переданных ей значения в голову переданного списка.
+
+```haskell
+GHCi> addTwoElements 2 12 [85,0,6]
+[2,12,85,0,6]
+```
 
 Ответ:
 
+Мой ответ:
+
+```haskell
+addTwoElements :: a -> a -> [a] -> [a]
+addTwoElements x y xs = x : y : xs
+```
+
+Лучший:
+
+```haskell
+import Data.Function
+
+addTwoElements :: a -> a -> [a] -> [a]
+addTwoElements = (.) `on` (:)
+```
 
 ### Задание 2
 
+Реализуйте функцию `nTimes`, которая возвращает список, состоящий из повторяющихся значений ее первого аргумента. Количество повторов определяется значением второго аргумента этой функции.
+
+```haskell
+GHCi> nTimes 42 3
+[42,42,42]
+GHCi> nTimes 'z' 5
+"zzzzz"
+```
 
 Ответ:
 
+Моё:
+
+```haskell
+nTimes:: a -> Int -> [a]
+nTimes x y = take y (repeat x)
+```
+
+Лучшее:
+
+```haskell
+nTimes:: a -> Int -> [a]
+nTimes = flip replicate
+```
 
 ### Задание 3
 
 
+
 Ответ:
+
 
 
 ### Задание 4
 
 
+
 Ответ:
+
 
 
 ### Задание 5
 
 
+
 Ответ:
+
 
 
 ### Задание 6
 
 
+
 Ответ:
+
 
 
 ### Задание 7
 
 
+
 Ответ:
+
 
 
 
