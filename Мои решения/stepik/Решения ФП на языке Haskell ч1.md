@@ -1463,11 +1463,35 @@ qsort (x:xs) = qsort (filter (<x) xs) ++ (x : qsort (filter (>=x) xs))
 
 ### Задание 4
 
+Напишите функцию `squares'n'cubes`, принимающую список чисел,  
+и возвращающую список квадратов и кубов элементов исходного списка.
 
+```haskell
+GHCi> squares'n'cubes [3,4,5]
+[9,27,16,64,25,125]
+```
 
 Ответ:
 
+Моё:
 
+```haskell
+squares'n'cubes :: Num a => [a] -> [a]
+squares'n'cubes = foldr (\x accum -> x^2 : x^3 : accum) []
+```
+
+Лучшее:
+
+```haskell
+squares'n'cubes :: Num a => [a] -> [a]
+squares'n'cubes = concatMap (\x -> [x ^ 2, x ^ 3])
+```
+
+```haskell
+squares'n'cubes :: Num a => [a] -> [a]
+squares'n'cubes [] = []
+squares'n'cubes (x:xs) = x^2 : x^3 : squares'n'cubes xs
+```
 
 ### Задание 5
 
