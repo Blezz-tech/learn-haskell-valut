@@ -1381,44 +1381,116 @@ groupElems (x:xs) = (x:ys) : groupElems zs
 
 ### Задание 1
 
+Напишите функцию `readDigits`, принимающую строку и возвращающую пару строк.  
+Первый элемент пары содержит цифровой префикс исходной строки, а второй - ее оставшуюся часть.
+
+```haskell
+GHCi> readDigits "365ads"
+("365","ads")
+GHCi> readDigits "365"
+("365","")
+```
+
+В решении вам поможет функция `isDigit` из модуля `Data.Char`.
 
 Ответ:
 
+Моё:
+
+```haskell
+import Data.Char
+
+readDigits :: String -> (String, String)
+readDigits = break (not . isDigit)
+```
+
+Лучшее:
+
+```haskell
+import Data.Char
+
+readDigits :: String -> (String, String)
+readDigits = span isDigit
+```
 
 ### Задание 2
 
+Реализуйте функцию `filterDisj`, принимающую два унарных предиката и список, и возвращающую список элементов, удовлетворяющих хотя бы одному из предикатов.
+
+```haskell
+GHCi> filterDisj (< 10) odd [7,8,10,11,12]
+[7,8,11]
+```
 
 Ответ:
 
+```haskell
+filterDisj :: (a -> Bool) -> (a -> Bool) -> [a] -> [a]
+filterDisj pred1 pred2  xs = filter (\x -> pred1 x || pred2 x ) xs
+```
 
 ### Задание 3
 
+Напишите реализацию функции `qsort`. Функция `qsort` должная принимать на вход список элементов и сортировать его в порядке возрастания с помощью сортировки Хоара: для какого-то элемента `x` изначального списка (обычно выбирают первый) делить список на элементы меньше и не меньше `x`, и потом запускаться рекурсивно на обеих частях.
+
+```haskell
+GHCi> qsort [1,3,2,5]
+[1,2,3,5]
+```
+
+Разрешается использовать только функции, доступные из библиотеки `Prelude`.
 
 Ответ:
 
+Моё (списано с Изучай хаскель во имя добра):
+
+```haskell
+qsort :: (Ord a) => [a] -> [a]
+qsort [] = []
+qsort (x:xs) =
+  let smallerSorted = qsort [a | a <- xs, a <= x]
+      biggerSorted = qsort [a | a <- xs, a > x]
+  in smallerSorted ++ (x : biggerSorted)
+```
+
+Лучшее:
+
+```haskell
+qsort [] = []
+qsort :: Ord a => [a] -> [a]
+qsort (x:xs) = qsort (filter (<x) xs) ++ (x : qsort (filter (>=x) xs))
+```
 
 ### Задание 4
 
 
+
 Ответ:
+
 
 
 ### Задание 5
 
 
+
 Ответ:
+
 
 
 ### Задание 6
 
 
+
 Ответ:
+
 
 
 ### Задание 7
 
 
+
 Ответ:
+
 
 
 
