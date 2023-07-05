@@ -1356,8 +1356,26 @@ GHCi> groupElems [1,2,3,2,4]
 
 Ответ:
 
+Моё первое решение (Да... Я украл функцию из стандартной библиотеки):
 
+```haskell
+groupElems :: Eq a => [a] -> [[a]]
+groupElems =  groupBy (==)
 
+groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+groupBy _  []     =  []
+groupBy eq (x:xs) =  (x:ys) : groupBy eq zs
+    where (ys,zs) = span (eq x) xs
+```
+
+Беспалевное решение:
+
+```haskell
+groupElems :: Eq a => [a] -> [[a]]
+groupElems []     = []
+groupElems (x:xs) = (x:ys) : groupElems zs
+    where (ys,zs) = span (== x) xs
+```
 
 ## 3.2 Функции высших порядков над списками
 
