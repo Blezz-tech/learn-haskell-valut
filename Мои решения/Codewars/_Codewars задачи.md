@@ -1,10 +1,13 @@
 # Планирую решить
 
 - [[cw-0000_0008 Valid Braces]]
+- [[cw-0000_0009 Product of consecutive Fib numbers]]
+- [[cw-0000_0010 Reverse words]]
 
 # Нерешенные задачи
 
 - https://www.codewars.com/kata/fibonacci-tribonacci-and-friends
+- https://www.codewars.com/kata/valid-parentheses-1
 
 # Решенные задачи
 
