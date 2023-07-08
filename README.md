@@ -267,10 +267,13 @@
 
 Что нужно будет сделать когда будет время
 
-- [ ] [Прочесть и написать отчет Error vs. Exception - HaskellWiki](https://wiki.haskell.org/Error_vs._Exception)
+- [ ] [Прочесть Error vs. Exception - HaskellWiki](https://wiki.haskell.org/Error_vs._Exception)
 - [ ] [Блог Нила Митчелла (Haskell и т. д.): В погоне за утечкой пространства при встряхивании](http://neilmitchell.blogspot.com/2013/02/chasing-space-leak-in-shake.html)
 - [ ] GHC.Base
 	- [ ] Понять исходный код этих функций
 		- [base: Basic libraries](https://hackage.haskell.org/package/base)
-- [ ] 
-
+- [ ] Прочитать и понять monomorphism restriction
+	- [ ] https://wiki.haskell.org/Monomorphism_restriction
+	- [ ] https://stackoverflow.com/questions/32496864/what-is-the-monomorphism-restriction
+- [ ] Прочитать про бесточечный стиль
+	- [ ] https://wiki.haskell.org/Pointfree
