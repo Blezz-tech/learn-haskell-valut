@@ -18,8 +18,7 @@
 - [x] 
 - [x] 
 
-- Задачи отмечаются в отдельном документе
-	- [[_Codewars задачи#Решенные задачи]]
+- codewars х[Профиль codewars](https://www.codewars.com/users/Blezz-tech)
 
 ---
 # Задание 1.1 Первичная теория
