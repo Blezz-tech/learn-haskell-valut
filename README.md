@@ -244,6 +244,7 @@
 
 Что нужно будет сделать когда будет время
 
+- [ ] Пройти ВСЕ Haskell ката на codewars 
 - [ ] [Прочесть Error vs. Exception - HaskellWiki](https://wiki.haskell.org/Error_vs._Exception)
 - [ ] [Блог Нила Митчелла (Haskell и т. д.): В погоне за утечкой пространства при встряхивании](http://neilmitchell.blogspot.com/2013/02/chasing-space-leak-in-shake.html)
 - [ ] GHC.Base
