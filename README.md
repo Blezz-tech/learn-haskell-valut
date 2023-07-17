@@ -255,3 +255,4 @@
 	- [ ] https://stackoverflow.com/questions/32496864/what-is-the-monomorphism-restriction
 - [ ] Прочитать про бесточечный стиль
 	- [ ] https://wiki.haskell.org/Pointfree
+- [ ] Разобраться как работает [[Очень интересный парсер]]
