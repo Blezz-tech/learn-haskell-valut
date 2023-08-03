@@ -258,3 +258,8 @@
 - [ ] Прочитать про бесточечный стиль
 	- [ ] https://wiki.haskell.org/Pointfree
 - [ ] Разобраться как работает [[Очень интересный парсер]]
+- [ ] Реализовать парсер
+	- [JSON Parser 100% From Scratch in Haskell (only 111 lines) - YouTube](https://www.youtube.com/watch?v=N9RUqGYuGfw)
+- [ ] Попробовать написать аналог bfxr на haskell
+	- [Bfxr. Make sound effects for your games.](https://www.bfxr.net/)
+	- [GitHub - increpare/bfxr: Flash + AIR sound effects generator. Based on Sfxr.](https://github.com/increpare/bfxr)
