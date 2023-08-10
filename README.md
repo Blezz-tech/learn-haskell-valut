@@ -263,3 +263,4 @@
 - [ ] Попробовать написать аналог bfxr на haskell
 	- [Bfxr. Make sound effects for your games.](https://www.bfxr.net/)
 	- [GitHub - increpare/bfxr: Flash + AIR sound effects generator. Based on Sfxr.](https://github.com/increpare/bfxr)
+- [ ] Прочесть [руководство пользователя GHC](https://downloads.haskell.org/ghc/latest/docs/users_guide/index.html)
